@@ -1,0 +1,36 @@
+<app-header (ishidden)="onhidden($event)" [showSidebar]=ishidden></app-header>
+
+   <app-side-nav [showSidebar]=ishidden></app-side-nav>
+<div [ngClass]="{'toggle-sidebar':ishidden}">
+<div class="main flex flex-wrap justify-center items-center p-20 mt-20" id="main">
+
+
+  <div class="mt-20" *ngFor="let susbcribtion of mySubscribeChannels">
+
+    <a [routerLink]="['/account',susbcribtion.id]" class="card hover:shadow-lg">
+      <div class="card-content">
+       <div class="card-image">
+         <img src={{susbcribtion.accountLogo}}  alt="">
+       </div>
+
+      </div>
+
+      <div class="absolute flex flex-col top-2 right-2 hidden course-content ">
+       <div class="text-xs font-thin text-white">{{susbcribtion.coursesCount}} Courses</div>
+       <div class="text-xs font-thin text-white">{{susbcribtion.videosCount}} Videos</div>
+       <div class="text-xs font-thin text-white">{{susbcribtion.booksCount}} Books</div>
+      </div>
+      <div class="account_name flex flex-col justify-center items-center p-2 mt-10 ">
+        <div class="font-medium text-sm text-gray-800">{{susbcribtion.accountName}} </div>
+        <div class="text-gray-400 font-thin text-xs">{{susbcribtion.subscriberCount}}  subscribers</div>
+      </div>
+
+
+
+     </a>
+
+  </div>
+
+
+</div>
+</div>

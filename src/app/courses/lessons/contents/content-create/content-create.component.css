@@ -1,0 +1,28 @@
+
+
+.content-action{
+  display: none;
+}
+
+.content-state:hover .content-action{
+  display: block;
+}
+/* styles.css */
+
+@keyframes fadeInOut {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.summary-action,.questions-action,.indroduction-action,.title-action{
+  display: none;
+
+
+}
+.summary:hover .summary-action,.questions:hover .questions-action,.introduction:hover .introduction-action,.title:hover .title-action{
+  display: block;
+}

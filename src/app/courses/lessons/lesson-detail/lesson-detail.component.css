@@ -1,0 +1,42 @@
+.header-title {
+    font-family:Roboto
+}
+.active{
+  font-weight: 500; /* Equivalent to font-medium in Tailwind */
+  color: #1d4ed8; /* Equivalent to text-blue-700 in Tailwind */
+  background-color: #dbeafe; /* Equivalent to bg-blue-100 in Tailwind */
+  padding-left: 0.5rem; /* Equivalent to px-2 in Tailwind */
+  padding-right: 0.5rem; /* Equivalent to px-2 in Tailwind */
+  padding-top: 0.25rem; /* Equivalent to py-1 in Tailwind */
+  padding-bottom: 0.25rem;
+
+}
+
+.border-left{
+  border-top-left-radius: 0.60rem;
+  border-bottom-left-radius: 0.60rem;
+ }
+ .border-top-left{
+   border-top-left-radius: 0.60rem;
+
+  }
+
+
+  /* styling scroll bar */
+
+  /* ::-webkit-scrollbar{
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track{
+    background-color: #e1f1e1;
+  }
+
+  ::-webkit-scrollbar-thumb{
+    background-color: lightskyblue;
+    border-radius: 100vh;
+    -webkit-border-radius: 100vh;
+    -moz-border-radius: 100vh;
+    -ms-border-radius: 100vh;
+    -o-border-radius: 100vh;
+} */

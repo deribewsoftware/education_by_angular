@@ -1,0 +1,83 @@
+<app-header (ishidden)="onhidden($event)" [showSidebar]=ishidden></app-header>
+
+<app-side-nav [showSidebar]=ishidden></app-side-nav>
+
+
+<div [ngClass]="{'toggle-sidebar':ishidden}">
+<div class="main" id="main">
+
+  <!-- <app-side-nav></app-side-nav> -->
+
+<div class="h-40 bg-blue-500 text-3xl flex justify-center items-center text-white font-sans font-bold pt-10">
+
+  {{department}} Videos
+
+</div>
+
+
+
+  <main class="pb-20" >
+
+
+
+    <div class="flex flex-col gap-4 lg:mt-10 justify-around">
+      <div *ngFor="let videos of videosAlist; let i=index">
+
+        <div class="p-6 text-lg font-medium">
+         {{videos.subject}}
+        </div>
+
+
+
+        <div class="flex flex-wrap justify-center gap-4 items-center">
+
+          <div *ngFor="let subject of videos.videos; let j=index">
+           <button (click)="onVideoNavigationEnd(i,j)">
+            <app-card
+            [subject]="subject.title"
+            [cover]="subject.cover"
+            [price]="subject.price"
+
+
+            [likes]="20"
+            [views]="30"
+            [account_name]="subject.account.accountName"
+            [account_logo]="subject.account.accountLogo"
+
+
+
+            [cardId]="subject.id"
+
+            [accountId]="videos.id"
+            [accountDirection]="'/account'"
+
+            ></app-card>
+          </button>
+
+          </div>
+
+
+
+
+
+
+
+
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+  </main>
+</div>
+</div>

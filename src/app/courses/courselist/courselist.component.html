@@ -1,0 +1,168 @@
+<app-header (ishidden)="onhidden($event)" [showSidebar]=ishidden></app-header>
+
+   <app-side-nav [showSidebar]=ishidden></app-side-nav>
+
+<div class="toggle-sidebar"  [ngClass]="{'toggle-sidebar':ishidden}">
+
+
+<main id="main" class="main mt-20 ">
+
+<!-- banner -->
+<div class="image-banner-container relative overflow-hidden shadow-md rounded-sm h-[250px] ">
+  <div class="image-banner flex transition-transform ease-out duration-500" [@bannerAnimation]="activeIndex">
+    <img class="object-contain" src="../../../assets/banner3.jpg" alt="Image 1" class="w-full h-auto">
+    <img class="object-contain" src="../../../assets/bannerst2.jpeg" alt="Image 1" class="w-full h-auto">
+    <img class="object-contain" src="../../../assets/banner4.jpg" alt="Image 2" class="w-full h-auto">
+    <img class="object-contain" src="../../../assets/bannerst2.jpg" alt="Image 1" class="w-full h-auto">
+    <img class="object-contain" src="../../../assets/banner5.jpg" alt="Image 1" class="w-full h-auto">
+    <img class="object-contain" src="../../../assets/bannerst2.jpg" alt="Image 1" class="w-full h-auto">
+    <img class="object-contain" src="../../../assets/banner6.png" alt="Image 2" class="w-full h-auto">
+
+
+    <!-- Add more images as needed -->
+  </div>
+  <button class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white bg-opacity-50 px-3 py-1 rounded-full text-gray-800" (click)="changeBanner(false)">Previous</button>
+  <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white bg-opacity-50 px-3 py-1 rounded-full text-gray-800" (click)="changeBanner(true)">Next</button>
+</div>
+
+
+
+  <div class="flex flex-wrap justify-around ">
+<div class="flex-1   lg:pl-4 ">
+  <div class="flex justify-start gap-4  border-gray-50 w-full p-1 mt-20 mb-10 border-b-2">
+
+    <button (click)="onTab('Courses')" class="text-gray-400 p-2 hover:text-gray-500 " [ngClass]="{activate:categorySelected==='Courses'}">Courses</button>
+    <button (click)="onTab('Videos')"  class="text-gray-400 p-2 hover:text-gray-500 " [ngClass]="{activate:categorySelected==='Videos'}">Videos</button>
+    <button (click)="onTab('Books')"  class="text-gray-400 p-2 hover:text-gray-500 " [ngClass]="{activate:categorySelected==='Books'}">Books</button>
+    <button (click)="onTab('Exams')"  class="text-gray-400 p-2 hover:text-gray-500 " [ngClass]="{activate:categorySelected==='Exams'}">Exams</button>
+
+
+</div>
+
+
+<h1 class="text-gray-600 border-b-2  pl-4">Most Popular Courses</h1>
+      <div class="flex flex-wrap justify-around gap-2 mt-6 p-4 " >
+          <div *ngFor="let subjects  of courses.slice(0,6);let i=index">
+            <app-card
+            [subject]="subjects.subject"
+            [cover]="subjects.cover"
+            [price]="subjects.price"
+            [lessons]="subjects.lessonsCount"
+            [likes]="subjects.likesCount"
+            [views]="subjects.viewsCount"
+            [account_name]="subjects.account.accountName"
+            [account_logo]="subjects.account.accountLogo"
+            [routerDirect]="'/course'"
+            [routeOne]="subjects.id"
+            [cardId]="subjects.id"
+
+            [accountDirection]="'/account'"
+            [accountId]="subjects.account.id"
+            [subscribers]="subjects.subscribersCount"
+
+            ></app-card>
+
+          </div>
+
+      </div>
+
+
+      <h1 class="text-gray-600 border-b-2 pt-16 pl-4">New Courses</h1>
+      <div class="flex flex-wrap justify-around gap-2 mt-10 p-4 " >
+
+          <button *ngFor="let subjects  of newCourses.slice(0,6);let i=index"  (click)="onCourseNavigation(i)">
+            <app-card
+            [subject]="subjects.subject"
+            [cover]="subjects.cover"
+            [price]="subjects.price"
+            [lessons]="subjects.lessonsCount"
+            [likes]="subjects.likesCount"
+            [views]="subjects.viewsCount"
+            [account_name]="subjects.account.accountName"
+            [account_logo]="subjects.account.accountLogo"
+
+            [cardId]="subjects.id"
+
+            [accountDirection]="'/account'"
+            [accountId]="subjects.account.id"
+            [subscribers]="subjects.subscribersCount"
+
+            ></app-card>
+
+          </button>
+
+      </div>
+
+
+
+
+    </div>
+
+
+
+
+
+    <div class="flex flex-col p-10 border-t-4 lg:h-fit lg:right-0 lg:overflow-y-auto bg-white shadow-md ">
+      <h1 class="text-gray-600 font-medium text-lg border-b-4   pb-4">Category</h1>
+      <div *ngFor="let category of categories" >
+      <a [routerLink]="['/courses/university/',category.id]" class="flex flex-col m-2 h-26 w-64 bg-gray-200 rounded-lg shadow-md hover:shadow-2xl  ">
+        <!-- <div class="bg-blue-600 w-20">
+          image
+        </div> -->
+
+          <h1 class="text-black font-medium p-2">{{category.category}}</h1>
+          <p class="text-gray-600 text-xs pl-4">{{category.courseCount}} courses</p>
+          <p class="text-gray-600 text-xs pl-4">{{category.videoCount}} videos</p>
+          <p class="text-gray-600 text-xs pl-4">{{category.bookCount}} books</p>
+
+
+      </a>
+
+</div>
+
+    </div>
+
+  </div>
+
+
+  <div class="flex flex-col pt-4 pb-10">
+
+
+    <h1 class="text-gray-600 font-medium text-lg border-b-4   pb-4">Most Popular Channels</h1>
+    <div class="flex flex-wrap justify-center gap-2">
+    <div *ngFor="let channel of popularChannels"  >
+    <a [routerLink]="['/account/',channel.id]" class="flex m-2 h-24 w-64 bg-slate-700 rounded-lg shadow-md hover:shadow-2xl  ">
+      <div class="bg-blue-600 w-20">
+       <img src="{{channel.accountLogo}}" alt="" class="h-24">
+      </div>
+      <div class="w-44 bg-white justify-center align-middle  ">
+        <h1 class="text-black font-medium pl-2">{{channel.accountName}}</h1>
+
+        <div class=" flex flex-col  pl-4  ">
+          <div class="text-xs font-thin text-gray-400">{{channel.coursesCount}} Courses</div>
+          <div class="text-xs font-thin text-gray-400">{{channel.videosCount}} Videos</div>
+          <div class="text-xs font-thin text-gray-400">{{channel.booksCount}} Books</div>
+
+          <div class="text-gray-600 font-mono text-xs ">{{channel.subscriberCount}}  subscribers</div>
+         </div>
+
+
+
+
+
+      </div>
+
+    </a>
+
+</div>
+</div>
+
+
+  </div>
+
+
+
+
+</main>
+<app-footer></app-footer></div>
+

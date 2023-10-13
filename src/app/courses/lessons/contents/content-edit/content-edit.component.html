@@ -1,0 +1,119 @@
+<div class="flex justify-center lg:20">
+
+
+
+    <!-- contents form -->
+
+    <div class="flex flex-col w-full lg:w-3/5 gap-4 lg:pl-6 lg:pt-28 bg-white ">
+
+
+
+
+      <!-- Chips section -->
+      <div class="flex justify-center p-2 lg:6">
+        <div *ngIf="chipsData!=[]" class="flex gap-3 flex-wrap  py-6  ">
+
+
+
+          <div *ngFor="let chips of chipsData">
+
+            <button     class="inline-flex items-center  rounded-full py-1 px-2 " [ngClass]="chipsStore.includes(chips)? 'bg-blue-600 hover:to-blue-700 text-white':'bg-gray-300'" [@fadeInOut]="true"(click)="onchipsSelected(chips)">
+              <span class="mr-2" [ngClass]="chipsStore.includes(chips)? 'block':'hidden'">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </span >
+
+              <span [ngClass]="chipsStore.includes(chips)? 'hidden':'block'">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+
+              </span>
+              <span>{{chips}}</span>
+            </button>
+
+
+          </div>
+
+         </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <form class="pb-10" [formGroup]="ContentEditForm" (ngSubmit)="onEditContent()" >
+
+        <div *ngIf="chipsStore.includes('title')"  class="form-group flex flex-col p-2 pb-6">
+
+<!-- sub title -->
+    <input type="text" id="title" [(ngModel)]="subTitleChange"  class="form-control text-black  font-medium py-4  border-none outline-none" formControlName="sub_title" placeholder="  write sub title of lesson...">
+        </div>
+
+
+<!-- content -->
+        <div *ngIf="chipsStore.includes('content')" mt-4 class="form-group flex  p-2 pb-6 w-full">
+     <label  for="content"  class="flex font-serif   py-4">
+     <i class="pr-2 fa-regular fa-hand-point-right"></i>
+       </label>
+  <textarea  class="outline-none form-control border-none  font-serif w-full" formControlName="content"  id="content"  cols="30" id="content" [(ngModel)]="contentChange"  rows="4" ></textarea>
+
+         </div>
+
+
+
+
+            <!-- remark  -->
+              <div *ngIf="chipsStore.includes('remark')" class=" mt-4 mr-2 lg:mr-4   flex flex-col border-l-4 border-green-600 bg-green-50   focus:outline-green-600">
+             <label for="remark" class="p-2 text-black font-medium text-lg ">remark</label>
+                    <textarea    class="form-control  border-none  bg-green-50 pl-2 font-serif text-black text-sm  outline-none focus:font-medium" [(ngModel)]="remarkChange"  formControlName="remark"  id="remark" cols="30" id="summary" rows="3" >options..</textarea>
+                  </div>
+
+                    <!-- end of remark -->
+
+
+
+
+                    <div *ngIf="chipsStore.includes('url')" class="form-group flex flex-col p-2  mt-4">
+
+                      <textarea type="text" id="url" [(ngModel)]="link_urlChange"  cols="30"  rows="3" class="form-control outline-none border-none text-blue-400 font-mono hover:underline" formControlName="link_url" >
+                        </textarea>
+                          </div>
+
+                          <!-- end of link url change -->
+
+
+                                <div *ngIf="chipsStore.includes('photo')" class="form-group flex flex-col p-2 ">
+
+                                  <div *ngIf="!isLoading" class="h-[300px] w-[300px]">
+                                    <img *ngIf="photoChange==null; else noNull" src={{content.photo}} width="100%" height="100%" class="object-contain w-full h-fully" alt="">
+                                    <ng-template #noNull>
+                                      <img src={{photoChange}} width="100%" height="100%" class="object-contain" alt="">
+                                    </ng-template>
+                                  </div>
+                                  <label class="text-sm font-sans py-1" for="image">Photo:</label>
+                                  <input type="file" (change)=" onSelectedContentPhoto($event)" id="image" class="form-control outline-none" placeholder="  enter title ...">
+                                      </div>
+
+                                      <!-- end of photo -->
+
+
+
+
+                                      <div class=" flex pt-6 justify-center">
+                                        <button type="submit" (click)="onLoading()" class=" rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-md font-medium font-sans px-2 py-1 w-1/2">Submit</button>
+                                            </div>
+      </form>
+
+    </div>
+
+
+
+</div>
+<app-loading [loading]="isLoading"></app-loading>

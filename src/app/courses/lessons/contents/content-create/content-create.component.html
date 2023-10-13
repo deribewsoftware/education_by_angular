@@ -1,0 +1,341 @@
+
+<div class="flex justify-center flex-wrap  ">
+
+  <div class="w-full lg:w-3/5 lg:overflow-y-auto lg:h-screen bg-white border-r-2 flex flex-col p-2  shadow-md lg:px-20 ">
+    <div class="flex justify-end pt-10  border-b-2">
+      <p class=" p-2 text-xl font-mono text-gray-400">2/2</p>
+    </div>
+
+
+
+
+
+    <!--Lesson Chips section -->
+<div class="flex justify-center p-2 lg:6 ">
+  <div *ngIf="lessonChips!=[]" class="flex gap-3 flex-wrap  py-6  ">
+
+
+    <div *ngFor="let chips of lessonChips">
+
+      <button *ngIf="!LessonChipsStore.includes(chips)" data-bs-toggle="modal" data-bs-target="#lessonUpdate" class="text-white font-mono inline-flex items-center  rounded-full py-1 px-2 "
+    [ngClass]="filePresent.includes(chips)? 'bg-blue-500 hover:bg-blue-600':'bg-green-500 hover:bg-green-600'"
+       [@fadeInOut]="true"(click)="onlessonchipsSelected(chips)">
+
+        <span *ngIf="filePresent.includes(chips); else noFilePresent" class="mr-2">
+          <i class="fa-regular fa-pen-to-square"></i>  </span>
+
+        <ng-template #noFilePresent><span class="mr-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+          </svg>
+        </span>
+        </ng-template>
+
+        <span>{{chips}}</span>
+      </button>
+
+
+    </div>
+
+   </div>
+</div>
+
+
+
+
+
+<!--Content  Chips section -->
+<div class="flex justify-center p-2 lg:6">
+  <div *ngIf="chipsData!=[]" class="flex gap-3 flex-wrap  py-6  ">
+
+
+
+    <div *ngFor="let chips of chipsData">
+
+      <button class="inline-flex items-center  rounded-full py-1 px-2 " [ngClass]="chipsStore.includes(chips)? 'bg-blue-600 hover:to-blue-700 text-white':'bg-gray-300'" [@fadeInOut]="true"(click)="onchipsSelected(chips)">
+        <span class="mr-2" [ngClass]="chipsStore.includes(chips)? 'block':'hidden'">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </span >
+
+        <span [ngClass]="chipsStore.includes(chips)? 'hidden':'block'">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+          </svg>
+
+        </span>
+        <span>{{chips}}</span>
+      </button>
+
+
+    </div>
+
+   </div>
+</div>
+
+
+
+
+
+    <!-- title -->
+    <div class="title relative ">
+    <div class="p-1 lg:p-2 text-2xl font-sans font-medium border-b-2 ">
+      {{lesson.title}}
+    </div>
+    <div class="title-action absolute flex items-center justify-center   border-2 border-gray-300  h-full w-full  z-50 top-0 ">
+      <div class="flex justify-center text-center align-middle  font-medium">
+        <button data-bs-toggle="modal" data-bs-target="#lessonUpdate" (click)="onlessonchipsSelected('title')" class="text-white"><i class="bg-gray-300 px-4 py-1 hover:text-blue-600  hover:bg-blue-100 fa-regular fa-pen-to-square shadow-2xl text-lg"></i></button>
+        <a class="text-white"><i class=" bg-gray-300 px-4 py-1 hover:text-red-600  hover:bg-red-100 fa-regular fa-trash-can text-lg shadow-2xl"></i></a>
+      </div>
+    </div>
+    </div>
+
+    <!-- Indroduction -->
+
+    <div class="introduction relative">
+  <div class=" bg-sky-50 p-4 rounded-lg text-left justify-start lg:m-4 mt-6 font-serif text-black">
+
+     {{lesson.body}}
+
+    </div>
+     <div class="introduction-action flex items-center justify-center content-action absolute border-2 border-gray-300  h-full w-full py-6 z-50 top-0 ">
+      <div class="flex justify-center text-center align-middle  font-medium">
+        <button data-bs-toggle="modal" data-bs-target="#lessonUpdate" (click)="onlessonchipsSelected('indroduction')"  class="text-white"><i class="bg-gray-300 px-4 py-1 hover:text-blue-600  hover:bg-blue-100 fa-regular fa-pen-to-square shadow-2xl text-lg"></i></button>
+        <a class="text-white"><i class=" bg-gray-300 px-4 py-1 hover:text-red-600  hover:bg-red-100 fa-regular fa-trash-can text-lg shadow-2xl"></i></a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<!-- content lists -->
+<div class="flex flex-col lg:p-2 lg:pl-5">
+
+  <div class="relative content-state" *ngFor="let content of lesson.content">
+
+    <!-- sub title -->
+    <h1  *ngIf="content.sub_title!=''" class="text-black  font-medium">{{content.sub_title}}</h1>
+
+    <div *ngIf="content.content!=''" class="flex font-serif py-1"><span><i class="pr-2 fa-regular fa-hand-point-right"></i></span>
+      <p>{{content.content}}</p>
+     </div>
+
+
+     <!-- links url -->
+     <div *ngIf="content.link_url!=''" class="p-3 ">
+<a class="text-mono text-sm text-blue-500 hover:underline py-2 hover:text-blue-600"> {{content.link_url}}</a>
+     </div>
+
+<!-- photo -->
+     <div  *ngIf="content.photo!='undefined'" class="flex justify-center mt-4 mb-4  h-[400px]">
+      <img src={{content.photo}} height="100%" width="100%" class="object-contain w-min-[100px] h-min-[100px] h-max-[350px]  w-max-[350px] " alt="">
+
+     </div>
+ <!-- remarks -->
+     <div *ngIf="content.remark!=''" class="flex flex-col border-l-4 border-green-600 bg-green-50 mt-4 mb-4 ">
+      <h1 class="p-2 text-black font-medium text-lg ">remark</h1>
+      <p class="p-2 font-serif text-black text-sm ">
+        {{content.remark}}
+      </p>
+     </div>
+
+
+
+<!-- Content action -->
+<div class="flex items-center justify-center content-action absolute border-2 border-gray-300  h-full w-full py-6 z-50 top-0 ">
+  <div class="flex justify-center text-center align-middle  font-medium">
+    <a [routerLink]="['/lesson/content',lesson.id,content.id]" class="text-white"><i class="bg-gray-300 px-4 py-1 hover:text-blue-600  hover:bg-blue-100 fa-regular fa-pen-to-square shadow-2xl text-lg"></i></a>
+    <a class="text-white"><i class=" bg-gray-300 px-4 py-1 hover:text-red-600  hover:bg-red-100 fa-regular fa-trash-can text-lg shadow-2xl"></i></a>
+  </div>
+</div>
+
+
+  </div>
+</div>
+<!-- end of content -->
+
+
+<!-- contents on Changed -->
+ <!-- contents form -->
+
+ <div class="flex flex-col w-full lg:pl-6 bg-white ">
+
+
+  <form class="pb-10" [formGroup]="ContentForm" (ngSubmit)="onCreateContent()" >
+<!-- sub title form -->
+    <div *ngIf="chipsStore.includes('title')" class="form-group flex flex-col p-2 pb-6">
+
+<input type="text" id="edittitle" [(ngModel)]="subTitleChange"  class="text-black form-control border-none outline-none font-medium my-4" formControlName="sub_title" placeholder="  add title ...">
+    </div>
+
+<!-- Contents form -->
+    <div *ngIf="chipsStore.includes('content')" class="flex my-4 ">
+      <label class="text-sm font-sans py-1" for="editcontent"><i class="pr-2 fa-regular fa-hand-point-right"></i></label>
+<textarea  [(ngModel)]="contentChange" class="form-control outline-none border-none text-sm font-sans py-1" formControlName="content"   cols="30" id="editcontent" rows="10" >add indroduction...</textarea>
+
+          </div>
+
+
+
+<!-- remarks form -->
+          <div *ngIf="chipsStore.includes('remark')" class="flex flex-col border-l-4 border-green-600 bg-green-50 my-4 ">
+            <label class="py-2 text-black font-medium text-lg " for="editremark">remark:</label>
+            <textarea  [(ngModel)]="remarkChange"  class="form-control outline-none border-none p-2 bg-green-50 font-serif text-black text-sm " formControlName="remark"  id="editremark" cols="30" id="summary" rows="3" >add remark...</textarea>
+
+                </div>
+<!-- link url form -->
+                <div *ngIf="chipsStore.includes('url')" class="form-group flex flex-col my-4">
+                  <label class="text-sm font-sans py-1" for="editurl">Url Link:</label>
+                  <input type="text" id="editurl" class="form-control outline-none" formControlName="link_url" placeholder="  add url ...">
+                      </div>
+<!-- Photo form -->
+
+                            <div *ngIf="chipsStore.includes('photo')" class="form-group flex flex-col p-2 pb-6">
+                              <label class="text-sm font-sans py-1" for="editimage">Photo:</label>
+                              <input type="file" (change)=" onSelectedContentPhoto($event)" id="editimage" class="form-control outline-none" placeholder="  enter title ...">
+                                  </div>
+
+                                  <div *ngIf="chipsStore.length!=0" class=" flex pt-10 justify-end gap-2" >
+                                    <button type="submit"  class=" rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-md font-medium font-sans px-2 py-1 ">Add More</button>
+                                    <button type="submit"  class=" rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-md font-medium font-sans px-2 py-1 ">Finish</button>
+                                        </div>
+  </form>
+
+</div>
+<!-- end of contents on Changed -->
+
+
+
+
+
+
+  <!-- questions -->
+  <!-- brain storm questions -->
+<div *ngIf="lesson.questions!=''" class=" questions flex flex-col border-l-4 border-orange-600 bg-orange-50 mt-4 mb-4 relative ">
+<h1 class="p-2  font-medium text-orange-600 ">Brainstrom Questions</h1>
+<ul class="p-2 font-serif text-black text-sm ">
+  <li class="py-1" *ngFor="let question of lesson.questions.split('?'); let i=index">{{i+1}}. {{question}}?</li>
+</ul>
+
+
+<div class="questions-action flex items-center justify-center content-action absolute border-2 border-gray-300  h-full w-full py-6 z-50 top-0 ">
+  <div class="flex justify-center text-center align-middle  font-medium">
+    <button data-bs-toggle="modal" data-bs-target="#lessonUpdate" (click)="onlessonchipsSelected('questions')"  class="text-white"><i class="bg-gray-300 px-4 py-1 hover:text-blue-600  hover:bg-blue-100 fa-regular fa-pen-to-square shadow-2xl text-lg"></i></button>
+    <a class="text-white"><i class=" bg-gray-300 px-4 py-1 hover:text-red-600  hover:bg-red-100 fa-regular fa-trash-can text-lg shadow-2xl"></i></a>
+  </div>
+</div>
+</div>
+
+  <!-- summary -->
+  <div *ngIf="lesson.summary!=''" class="summary flex flex-col p-1 pb-20 justify-center mt-6 lg:p-4 lg:pl-4 relative">
+    <h1 class="text-black  font-medium py-1 lg:pl-4">Conclusion</h1>
+<p class="font-serif text-sm lg:pl-4">
+ {{lesson.summary}}
+</p>
+
+<div class="summary-action flex items-center justify-center content-action absolute border-2 border-gray-300  h-full w-full py-6 z-50 top-0 ">
+  <div class="flex justify-center text-center align-middle  font-medium">
+    <button data-bs-toggle="modal" data-bs-target="#lessonUpdate" (click)="onlessonchipsSelected('conclusion')"  class="text-white"><i class="bg-gray-300 px-4 py-1 hover:text-blue-600  hover:bg-blue-100 fa-regular fa-pen-to-square shadow-2xl text-lg"></i></button>
+    <a class="text-white"><i class=" bg-gray-300 px-4 py-1 hover:text-red-600  hover:bg-red-100 fa-regular fa-trash-can text-lg shadow-2xl"></i></a>
+  </div>
+</div>
+  </div>
+
+  <div class="py-64"></div>
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+</div>
+
+
+<!-- update Lessson modal -->
+
+<div class="modal fade" id="lessonUpdate">
+  <div class="modal-dialog modal-dialog-centered">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <div class="modal-title">
+          <h1>Lessons</h1>
+
+
+        </div>
+
+        <button data-bs-dismiss="modal" data-bs-target="#lessonUpdate" class="btn btn-close"></button>
+      </div>
+
+
+      <form class="" [formGroup]="LessonForm" (ngSubmit)="updateLesson()">
+        <div class="modal-body">
+<!-- title -->
+          <div *ngIf="selectedLessonChips==='title'" class="p-2 ">
+            <label for="maintitle">Title:</label>
+            <input type="text" id="maintitle" formControlName="title" placeholder="enter title" class="form-control">
+          </div>
+
+
+
+          <!-- Indroduction -->
+          <div *ngIf="selectedLessonChips==='indroduction'"  class="p-2 ">
+            <label for="Indroduction">Indroduction:</label>
+            <textarea type="text" id="Indroduction" formControlName="body" placeholder="enter title" cols="30" rows="4" class="form-control">
+              enter indroduction
+              </textarea>
+          </div>
+
+ <!-- Questions -->
+ <div *ngIf="selectedLessonChips==='questions'" class="p-2 ">
+  <label for="questions">Questions:</label>
+  <textarea type="text" id="questions" formControlName="questions" placeholder="enter title" cols="30" rows="3" class="form-control">
+    enter questions...
+    </textarea>
+</div>
+
+
+           <!-- summary -->
+           <div *ngIf="selectedLessonChips==='conclusion'" class="p-2 ">
+            <label for="summary">Conclusion:</label>
+            <textarea type="text" id="summary" formControlName="summary" placeholder="enter title" cols="30" rows="3" class="form-control">
+              enter conclusion
+              </textarea>
+          </div>
+<!-- Videos -->
+<div *ngIf="selectedLessonChips==='video'" class="p-2 ">
+  <label for="videos">Video:</label>
+  <input type="file" (change)="onLessonVideoSelected($event)" id="videos" placeholder="enter title" cols="30" rows="3" class="form-control">
+
+</div>
+
+<!-- books -->
+<div *ngIf="selectedLessonChips==='book'" class="p-2 ">
+  <label for="books">Book:</label>
+  <input type="file" (change)="onLessonBookSelected($event)"  id="books" placeholder="enter title" cols="30" rows="3" class="form-control">
+
+
+</div>
+        </div>
+
+        <div class="modal-footer">
+          <button data-bs-dismiss="modal" data-bs-target="#lessonUpdate"   class=" bg-red-500 hover:bg-red-600 px-2 py-1 rounded-lg  text-white font-medium font-sans">Cancel</button>
+          <button type="submit" class=" bg-green-500 hover:bg-green-600 px-2 py-1 rounded-lg  text-white font-medium font-sans">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+.poppins{
+  font-family: 'Poppins', sans-serif;
+}
+
+#courses-table{
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#courses-table td, #courses-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#courses-table tr:nth-child(even){background-color: #f2f2f2;}
+
+#courses-table tr:hover {background-color: #ddd;}
+
+#courses-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+.hide-table{
+
+  transition: all 0.5s linear;
+  z-index: -10;
+
+
+ display: none;
+
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+}
+.show-table{
+ display: block;
+  z-index: -10;
+
+  transition:all 0.5s linear;
+
+  -webkit-transition:all 0.5s linear;
+  -moz-transition:all 0.5s linear;
+  -ms-transition:all 0.5s linear;
+  -o-transition:all 0.5s linear;
+}
+.activate{
+  color: blue;
+  border-width: 2px;
+  border:none;
+  border-bottom: 3px solid blue;
+  font-weight: 500;
+  font-size: 1.125rem;
+}

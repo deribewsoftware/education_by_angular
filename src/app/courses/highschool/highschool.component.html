@@ -1,0 +1,868 @@
+<div class="flex flex-col justify-center p-2 bg-white shadow-md">
+  <div class="flex gap-40">
+    <div>back</div>
+    <div>
+      Highschool Courses
+    </div>
+
+  </div>
+
+  <!-- navbar items -->
+  <div class="flex justify-around mt-4 flex-wrap">
+    <div class="dropdown dropdown-menu-end">
+      <button type="button" class="btn btn-none dropdown-toggle" data-bs-toggle="dropdown" (click)="onGradeSelect(9)" [ngClass]="{act:grade==9}">
+        Grade 9 <span class="text-xs pb-2">{{subject9}}</span>
+      </button>
+
+      <ul class="dropdown-menu" >
+
+        <li *ngFor="let sub of allSubject;let i=index"><button class="dropdown-item" (click)="onSubjectSubject9(sub)">{{sub }}</button></li>
+      </ul>
+    </div>
+
+    <!-- Grade 10 -->
+    <div class="dropdown dropdown-menu-end">
+      <button type="button" class="btn btn-none dropdown-toggle" data-bs-toggle="dropdown" (click)="onGradeSelect(10)" [ngClass]="{act:grade==10}">
+        Grade 10 <span class="text-xs pb-2">{{subject10}}</span>
+      </button>
+      <ul class="dropdown-menu"><li *ngFor="let sub of allSubject;let i=index"><button class="dropdown-item" (click)="onSubjectSubject10(sub)">{{sub }}</button></li></ul>
+
+    </div>
+
+
+
+
+
+   <!-- Grade 11 -->
+   <div class="dropdown dropdown-menu-end">
+    <button type="button" class="btn btn-none dropdown-toggle" data-bs-toggle="dropdown" (click)="onGradeSelect(11)" [ngClass]="{act:grade==11}">
+      Grade 11 <span class="text-xs pb-2">{{subject11}}</span>
+    </button>
+      <ul class="dropdown-menu"><li *ngFor="let sub of allSubject;let i=index"><button class="dropdown-item" (click)="onSubjectSubject11(sub)">{{sub }}</button></li></ul>
+  </div>
+
+
+
+
+
+   <!-- Grade 12 -->
+   <div class="dropdown dropdown-menu-end">
+    <button type="button" class="btn btn-none dropdown-toggle" data-bs-toggle="dropdown" (click)="onGradeSelect(12)" [ngClass]="{act:grade==12}">
+      Grade 12 <span class="text-xs pb-2">{{subject12}}</span>
+    </button>
+    <ul class="dropdown-menu"><li *ngFor="let sub of allSubject;let i=index"><button class="dropdown-item" (click)="onSubjectSubject12(sub)">{{sub }}</button></li></ul>
+  </div>
+
+
+  </div>
+
+</div>
+
+
+
+
+<!-- main contents -->
+
+<main>
+
+
+
+<!-- All grade 9 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject9==='all'&& grade==9">
+    <div *ngFor="let course of all9">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+    </div>
+  </div>
+
+  <!-- English grade 9 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject9==='English'">
+    <div *ngFor="let course of English9">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- maths grade 9 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject9==='Mathematics'">
+    <div *ngFor="let course of Maths9">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+    </div>
+  </div>
+
+
+
+
+  <!--Physics grade 9 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject9==='Physics'">
+    <div *ngFor="let course of Physics9">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+    </div>
+  </div>
+
+
+  <!-- Chemistry grade 9 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject9==='Chemistry'">
+    <div *ngFor="let course of Chemistry9">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+    </div>
+  </div>
+
+
+
+
+    <!-- Biology grade 9 courses -->
+    <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject9==='Biology'">
+      <div *ngFor="let course of Biology9">
+        <app-card
+        [subject]="course.subject"
+        [cover]="course.cover"
+        [price]="course.price"
+
+
+        [likes]="course.likesCount"
+        [views]="course.viewsCount"
+        [account_name]="course.account.accountName"
+        [account_logo]="course.account.accountLogo"
+        [lessons]="course.lessonsCount"
+        [routerDirect]="'/course'"
+        [cardId]="course.id"
+        [accountId]="course.account.id"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+      </div>
+    </div>
+
+
+  <!-- Geography grade 9 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject9==='Geography'">
+    <div *ngFor="let course of Geography9">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+    </div>
+  </div>
+
+
+
+
+  <!-- All grade 10 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject10==='all'&& grade==10">
+    <div *ngFor="let course of all10">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+
+
+
+       <!--English grade 10 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject10==='English'&& grade==10">
+    <div *ngFor="let course of English10">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+       <!-- Maths grade 10 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject10==='Mathematics'&& grade==10">
+    <div *ngFor="let course of Maths10">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+        <!-- Physics grade 10 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject10==='Physics'&& grade==10">
+    <div *ngFor="let course of Physics10">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+
+      <!-- Chemistry grade 10 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject10==='Chemistry'&& grade==10">
+    <div *ngFor="let course of Chemistry10">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+
+
+
+      <!-- Biology grade 10 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject10==='Biology'&& grade==10">
+    <div *ngFor="let course of Biology10">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+
+
+      <!-- Physics grade 10 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject10==='Physics'&& grade==10">
+    <div *ngFor="let course of Physics10">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+
+
+       <!-- All grade 11 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject11==='all'&& grade==11">
+    <div *ngFor="let course of all11">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+       <!-- English grade 11 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject11==='English'&& grade==11">
+    <div *ngFor="let course of English11">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+       <!-- Mathematics grade 11 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject11==='Mathematics' && grade==11">
+    <div *ngFor="let course of Maths11">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+       <!-- Physics grade 11 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject11==='Physics'&& grade==11">
+    <div *ngFor="let course of Physics11">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+
+
+
+       <!-- Chemistry grade 11 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject11==='Chemistry' && grade==11">
+    <div *ngFor="let course of Chemistry11">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+
+       <!-- Biology grade 11 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject11==='Biology' && grade==11">
+    <div *ngFor="let course of Biology11">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+
+
+       <!-- Geography grade 11 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject11==='Geography' && grade==11">
+    <div *ngFor="let course of Geography11">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+
+        <!-- History grade 11 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject11==='History' && grade==11">
+    <div *ngFor="let course of History11">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+
+            <!-- Civic grade 11 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject12==='Civic' && grade==11">
+    <div *ngFor="let course of Civic11">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+
+
+
+        <!-- All grade 12 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject12==='all'&& grade==12">
+    <div *ngFor="let course of all12">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+       <!-- English grade 12 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject12==='English'&& grade==12">
+    <div *ngFor="let course of English12">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+       <!-- Mathematics grade 12 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject12==='Mathematics' && grade==12">
+    <div *ngFor="let course of Maths12">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+       <!-- Physics grade 12 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject12==='Physics'&& grade==12">
+    <div *ngFor="let course of Physics12">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+
+
+
+       <!-- Chemistry grade 12 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject12==='Chemistry' && grade==12">
+    <div *ngFor="let course of Chemistry12">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+
+       <!-- Biology grade 12 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject12==='Biology' && grade==12">
+    <div *ngFor="let course of Biology12">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+
+
+       <!-- Geography grade 12 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject12==='Geography' && grade==12">
+    <div *ngFor="let course of Geography12">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+
+        <!-- History grade 12 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject12==='History' && grade==12">
+    <div *ngFor="let course of History12">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+
+            <!-- Civic grade 12 courses -->
+  <div class="flex flex-wrap gap-3 justify-around mt-20"  *ngIf="subject12==='Civic' && grade==12">
+    <div *ngFor="let course of Civic12">
+      <app-card
+      [subject]="course.subject"
+      [cover]="course.cover"
+      [price]="course.price"
+
+
+      [likes]="course.likesCount"
+      [views]="course.viewsCount"
+      [account_name]="course.account.accountName"
+      [account_logo]="course.account.accountLogo"
+      [lessons]="course.lessonsCount"
+      [routerDirect]="'/course'"
+      [cardId]="course.id"
+      [accountId]="course.account.id"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+      </div>
+      </div>
+
+
+
+
+</main>

@@ -1,0 +1,501 @@
+<div class=""  [ngClass]="{'toggle-sidebar':ishidden}">
+  <app-header (ishidden)="onhidden($event)"></app-header>
+
+   <app-side-nav [showSidebar]=ishidden
+
+   ></app-side-nav>
+
+<main id="account"  class="main ">
+  <div class="flex flex-col gap-3 " >
+
+    <div class="banner w-full h-auto bg-slate-100 pt-5 border-b-2 border-slate-200 pb-0  ">
+
+      <div class="flex justify-around flex-wrap p-2">
+
+        <div class="flex flex-col items-center">
+          <img  class="rounded-circle w-[120px] h-[120px]"
+          src={{account.accountLogo}} alt="">
+          <div class="account_name p-2">
+
+
+            <div class="font-semibold text-lg">
+ {{account.accountName}}
+            </div>
+
+
+            <div class="font-medium text-gray-400 text-xs">
+              {{account.subscriberCount}} subscribers
+                        </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button  data-bs-toggle="modal" data-bs-target="#account-update" mat-menu-item [style.color]="'green'">
+              <mat-icon  [style.color]="'green'">edit</mat-icon>
+              <span>Edit Channel</span>
+            </button>
+            <button mat-menu-item [style.color]="'red'">
+              <mat-icon  [style.color]="'red'">delete</mat-icon>
+              <span>Delete Channel</span>
+            </button>
+            <button  data-bs-toggle="modal" data-bs-target="#createCourse"  mat-menu-item [style.color]="'blue'">
+              <mat-icon  [style.color]="'blue'">add</mat-icon>
+              <span>Course</span>
+            </button>
+            <button data-bs-toggle="modal" data-bs-target="#createVideo"  mat-menu-item [style.color]="'indigo'">
+              <mat-icon  [style.color]="'indigo'">add</mat-icon>
+              <span>Video</span>
+            </button>
+            <button data-bs-toggle="modal" data-bs-target="#createBook" mat-menu-item [style.color]="'teal'">
+              <mat-icon  [style.color]="'teal'">add</mat-icon>
+              <span>Book</span>
+            </button>
+          </mat-menu>
+        </div>
+
+      </div>
+
+
+
+
+
+      <div class="flex justify-around">
+        <button (click)="onTap('courses')" class="pb-3 p-2 hover:bg-blue-100 items-center text-sm button-animate" [ngClass]="{'act': toolbar === 'courses'}">
+          Courses({{account.coursesCount}} )
+        </button>
+        <button (click)="onTap('videos')" class="pb-3 p-2 hover:bg-blue-100 items-center text-sm" [ngClass]="{'act':( toolbar === 'videos')}">
+          Videos({{account.videosCount}})
+        </button>
+        <button (click)="onTap('books')" class="pb-3 p-2 hover:bg-blue-100 items-center text-sm " [ngClass]="{'act': (toolbar =='books')}">
+          Books({{account.booksCount}})
+        </button>
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+<!-- Cards list -->
+
+<!-- Courses card -->
+
+<div class="flex flex-wrap justify-around gap-4 pt-10 "  *ngIf="toolbar==='courses' || toolbar==null">
+  <div *ngIf="account.courses.length!=0; else noCourses" class="flex flex-wrap gap-3">
+    <div *ngFor="let course of account.courses">
+      <app-my-course-card
+      [cover]="course.cover"
+
+      [subject]="course.subject"
+      [price]="course.price"
+      [cardId]="course.id"
+      [routerDirect]="'/course'"
+
+      >
+
+      </app-my-course-card>
+    </div>
+
+  </div>
+  <ng-template #noCourses>
+<div class=" text-red-700 text-4xl font-extrabold">No Courses</div>
+  </ng-template>
+
+
+
+</div>
+
+
+
+
+<!-- Videos Cards -->
+<div class="flex flex-wrap justify-around gap-4 pt-10" *ngIf="toolbar==='videos'">
+
+  <div *ngIf="account.videos.length!=0; else noCourses"  class="flex flex-wrap gap-3">
+    <div *ngFor="let video of account.videos">
+      <app-my-course-card
+      [cover]="video.cover"
+
+      [subject]="video.title"
+      [price]="video.price"
+      [cardId]="video.id"
+
+      [routerDirect]="'/video/player'"
+
+      >
+
+      </app-my-course-card>
+    </div>
+
+  </div>
+
+
+  <ng-template #noCourses>
+    <div class=" text-red-700 text-4xl font-extrabold">No Videos</div>
+    </ng-template>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Books Cards -->
+<div class="flex flex-wrap justify-around gap-4 pt-10" *ngIf="toolbar==='books'">
+
+  <div *ngIf="account.books.length!=0; else noBooks" >
+
+    books
+    <div *ngFor="let video of account.videos">
+      <app-my-course-card></app-my-course-card>
+    </div>
+
+  </div>
+
+  <ng-template #noBooks>
+    <div class=" text-red-700 text-4xl font-extrabold">No Books</div>
+    </ng-template>
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Account Update Modals -->
+
+
+
+
+
+<div class="modal fade" id="account-update">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content relative">
+      <div class="modal-header">
+        <div class="modal-title">
+          <h1 class="text-lg font-medium">Account Update</h1>
+        </div>
+        <button class="btn btn-close" data-bs-dismiss="modal" data-bs-target="#account-update"></button>
+      </div>
+
+
+
+      <form [formGroup]="accountForm" >
+
+        <div class="modal-body">
+
+
+
+      <div class="form-group pt-5">
+        <label for="account_name">Account Name</label>
+
+        <input type="text" value="Name" [(ngModel)]="account.accountName"   id="account_name"  class=" form-control " formControlName="accountName"  placeholder=" enter your account name">
+      </div>
+      <div class="form-group pt-5">
+        <label for="account_logo">Account Logo</label>
+        <img class="rounded-lg" [src]="imageUrl? imageUrl:account.accountLogo" height="100px" width="100px" alt="">
+        <input type="file" (change)="onFileSelected($event)" id="account_logo"  class="form-control "   placeholder=" enter your account name">
+      </div>
+
+
+
+
+        </div>
+
+
+
+
+
+        <div class="modal-footer pt-10">
+
+            <div data-bs-dismiss="modal" data-bs-target="#account-update" class="  px-2 bg-red-500  text-md rounded-lg  hover:bg-red-600 text-white">Close</div>
+            <button  (click)="onUpdateAccount()" data-bs-dismiss="modal" data-bs-target="#account-update" class="px-2 bg-green-500  text-md rounded-lg ml-2 hover:bg-green-600 text-white">Save </button>
+        </div>
+      </form>
+
+
+
+        <div *ngIf="hiddeForm" class="flex justify-center align-middle p-32 bg-black bg-opacity-50  absolute h-[100%] w-[100%]">
+          <!-- Add your loading indicator here -->
+          <div class="spinner-border text-white font-bold text-4xl  h-20 w-20 mt-32"></div>
+        </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Courses modals -->
+
+<div class="modal fade" id="createCourse">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content relative">
+      <div class="modal-header">
+        <div class="modal-title">
+          <h1 class="text-lg font-medium">Course Registrar</h1>
+        </div>
+        <button class="btn btn-close" data-bs-dismiss="modal" data-bs-target="#createCourse"></button>
+      </div>
+
+
+        <form [formGroup]="courseForm" (ngSubmit)="createCourses()">
+
+      <div class="modal-body p-4" >
+
+        <div class="form-group mt-4">
+          <label for="category " class="form-label font-medium">Category</label>
+          <select class="form-select"  id="category" (change)="onCategoryId($event)" aria-label="Default select example" >
+            <option selected>Category</option>
+            <option *ngFor="let course of category" value={{course.id}}>{{course.subject}}</option>
+
+          </select>
+
+        </div>
+
+          <div class="form-group mt-4">
+            <label for="cover" class="font-medium">Course Cover</label>
+            <input type="file" class="form-control" (change)="onCourseCoverSelected($event)">
+          </div>
+
+          <div class="form-group mt-4">
+            <label for="title" class="font-medium">Course Title</label>
+            <input type="text" id="title" class="form-control" formControlName="courseTitle">
+          </div>
+
+          <div class="form-group mt-4">
+            <label for="desc" class="font-medium">Description</label>
+            <input type="text" id="desc" class="form-control" formControlName="description">
+          </div>
+
+          <div class="form-group mt-4">
+            <label for="price" class="font-medium">Price</label>
+            <input type="number" id="price" class="form-control" formControlName="price">
+          </div>
+
+        </div>
+
+          <div class="modal-footer">
+            <a class="btn btn-danger">Cancel</a>
+            <button (click)="onSpinning()" type="submit" class="btn bg-green-500 hover:bg-green-600 text-white">Next</button>
+          </div>
+        </form>
+        <div *ngIf="hiddeForm" class="flex justify-center align-middle p-32 bg-black bg-opacity-50  absolute h-[100%] w-[100%]">
+          <!-- Add your loading indicator here -->
+          <div class="spinner-border text-white font-bold text-4xl  h-20 w-20 mt-32"></div>
+        </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!--Videos  modals -->
+
+<div class="modal fade" id="createVideo">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content relative">
+      <div class="modal-header">
+        <div class="modal-title">
+          <h1 class="text-lg font-medium">Video Registrar</h1>
+        </div>
+        <button class="btn btn-close" data-bs-dismiss="modal" data-bs-target="#createVideo"></button>
+      </div>
+
+
+        <form  [formGroup]="videoForm" (ngSubmit)="onCreateVideo()">
+
+      <div class="modal-body p-4" >
+
+        <div class="form-group mt-4">
+          <label for="category " class="form-label font-medium">Category</label>
+          <select class="form-select"  id="category" (change)="onCategoryId($event)" aria-label="Default select example" >
+            <option selected>Category</option>
+            <option *ngFor="let video of videoCategories" value={{video.id}}>{{video.subject}}</option>
+
+          </select>
+
+        </div>
+
+          <div class="form-group mt-4">
+            <label for="cover" class="font-medium">Video Cover</label>
+            <input type="file" class="form-control" (change)="onVideoCoverSelect($event)">
+          </div>
+
+          <div class="form-group mt-4">
+            <label for="cover" class="font-medium">Upload Video </label>
+            <input type="file" class="form-control" (change)="onVideoSelect($event)">
+          </div>
+
+          <div class="form-group mt-4">
+            <label for="title" class="font-medium">Video Title</label>
+            <input type="text" id="title" class="form-control" formControlName="title">
+          </div>
+
+          <div class="form-group mt-4">
+            <label for="desc" class="font-medium">Description</label>
+            <input type="text" id="desc" class="form-control" formControlName="description">
+          </div>
+
+          <div class="form-group mt-4">
+            <label for="price" class="font-medium">Price</label>
+            <input type="number" id="price" class="form-control" formControlName="price">
+          </div>
+
+        </div>
+
+          <div class="modal-footer">
+            <a class="btn btn-danger">Cancel</a>
+            <button (click)="onSpinning()" type="submit" class="btn bg-green-500 hover:bg-green-600 text-white">Next</button>
+          </div>
+        </form>
+
+        <div *ngIf="hiddeForm" class="flex justify-center align-middle p-32 bg-black bg-opacity-50  absolute h-[100%] w-[100%]">
+          <!-- Add your loading indicator here -->
+          <div class="spinner-border text-white font-bold text-4xl  h-20 w-20 mt-32"></div>
+        </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Books modals -->
+
+<div class="modal fade" id="createBook">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">
+          <h1 class="text-lg font-medium">Books Registrar</h1>
+        </div>
+        <button class="btn btn-close" data-bs-dismiss="modal" data-bs-target="#createBook"></button>
+      </div>
+
+
+        <form *ngIf="!uploading" [formGroup]="bookForm" (ngSubmit)="onCreateBook()">
+
+      <div class="modal-body p-4" >
+
+        <div class="form-group mt-4">
+          <label for="category " class="form-label font-medium">Category</label>
+          <select class="form-select"  id="category" (change)="onCategoryId($event)" aria-label="Default select example" >
+            <option selected>Category</option>
+            <option *ngFor="let book of bookCategories" value={{book.id}}>{{book.subject}}</option>
+
+          </select>
+
+        </div>
+
+          <div class="form-group mt-4">
+            <label for="cover" class="font-medium">Course Cover</label>
+            <input type="file" class="form-control" (change)="onBookCoverSelect($event)">
+          </div>
+
+
+
+          <div class="form-group mt-4">
+            <label for="cover" class="font-medium">Upload Book or pdf</label>
+            <input type="file" class="form-control" (change)="onBookSelect($event)">
+          </div>
+
+
+
+          <div class="form-group mt-4">
+            <label for="title" class="font-medium">Course Title</label>
+            <input type="text" id="title" class="form-control" formControlName="title">
+          </div>
+
+          <div class="form-group mt-4">
+            <label for="desc" class="font-medium">Description</label>
+            <input type="text" id="desc" class="form-control" formControlName="description">
+          </div>
+
+          <div class="form-group mt-4">
+            <label for="price" class="font-medium">Price</label>
+            <input type="number" id="price" class="form-control" formControlName="price">
+          </div>
+
+        </div>
+
+          <div class="modal-footer">
+            <a class="btn btn-danger">Cancel</a>
+            <button type="submit" class="btn bg-green-500 hover:bg-green-600 text-white">Next</button>
+          </div>
+        </form>
+
+
+        <div *ngIf="uploading">
+          <!-- Add your loading indicator here -->
+          spinning Loading...
+        </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+</main>
+
+
+
+
+
+</div>
+
+
+<app-loading [loading]="isAccountUpdatedLoaded"></app-loading>

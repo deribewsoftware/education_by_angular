@@ -1,0 +1,371 @@
+
+<app-header (ishidden)="onhidden($event)" [showSidebar]=ishidden></app-header>
+
+<app-side-nav [showSidebar]=ishidden></app-side-nav>
+
+<div [ngClass]="{'toggle-sidebar':ishidden}">
+  <main class="main " id="main">
+    <nav class="mt-10 ">
+
+
+<mat-tab-group dynamicHeight>
+  <mat-tab label="Payment">
+
+    <div class="w-full lg:p-2 mt-10">
+
+<!-- table -->
+
+<table mat-table
+       [dataSource]="transactions" matSort  multiTemplateDataRows
+       class="mat-elevation-z8">
+
+
+       <ng-container matColumnDef="saveId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Account Id </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.saveId}} </td>
+      </ng-container>
+
+
+  <ng-container matColumnDef="fullName" >
+    <th mat-header-cell *matHeaderCellDef> Full Name </th>
+    <td mat-cell *matCellDef="let transaction"> {{transaction.user.firstName}} {{transaction.user.lastName}}  </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="bankTransactionId" >
+    <th mat-header-cell *matHeaderCellDef> Bank Transaction Id</th>
+    <td mat-cell *matCellDef="let transaction"> {{transaction.bankTransactionId}}   </td>
+  </ng-container>
+
+  <ng-container matColumnDef="balance" >
+    <th mat-header-cell *matHeaderCellDef> Balance</th>
+    <td mat-cell *matCellDef="let transaction"> {{transaction.saveBalance}}ETB  </td>
+  </ng-container>
+
+
+
+  <ng-container matColumnDef="expand">
+    <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+    <td mat-cell *matCellDef="let transaction">
+      <button mat-icon-button aria-label="expand row" (click)="(expandedElement = expandedElement === transaction ? null : transaction); $event.stopPropagation()">
+        <mat-icon *ngIf="expandedElement !== transaction">keyboard_arrow_down</mat-icon>
+        <mat-icon *ngIf="expandedElement === transaction">keyboard_arrow_up</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let transaction" [attr.colspan]="columnsToDisplayWithExpand.length">
+      <div class=" flex flex-wrap gap-10 justify-around "
+           [@detailExpand]="transaction == expandedElement ? 'expanded' : 'collapsed'">
+        <div class=" pb-2 ">
+          <img class="object-contain rounded-lg h-64 w-64 " src={{transaction.bankReceipt}} alt="">
+
+        </div>
+<div class="pt-20">
+
+  <button class="btn btn-primary p-2  " (click)="onApprovedTransaction(transaction.id)">Approve</button>
+</div>
+
+
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+  <tr mat-row *matRowDef="let transaction; columns: columnsToDisplayWithExpand;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === transaction"
+      (click)="expandedElement = expandedElement === transaction ? null : transaction">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
+
+
+
+    </div>
+    </mat-tab>
+
+
+
+
+    <mat-tab label="Users">
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+      </mat-form-field>
+
+      <div class="mat-elevation-z8 overflow-x-auto ">
+        <table mat-table [dataSource]="dataSource" matSort  class="table-responsive ">
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+          </ng-container>
+
+           <!-- photo  Column -->
+           <ng-container matColumnDef="photo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Photo</th>
+            <td mat-cell *matCellDef="let row"> <img class="p-1 w-16 h-16 object-cover" src={{row.profileImage}} alt=""></td>
+          </ng-container>
+
+          <!-- Full Name Column -->
+          <ng-container matColumnDef="fullName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Full Name</th>
+            <td mat-cell *matCellDef="let row"> {{row.firstName}} {{row.lastName}}</td>
+          </ng-container>
+
+          <!-- Job Column -->
+          <ng-container matColumnDef="job">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Job</th>
+            <td mat-cell *matCellDef="let row"> {{row.job}} </td>
+          </ng-container>
+
+           <!-- Educational Level  Column -->
+           <ng-container matColumnDef='department'>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Department</th>
+            <td mat-cell *matCellDef="let row"> {{row.department}} </td>
+          </ng-container>
+
+          <!-- Phone Number -->
+          <ng-container matColumnDef="phone_no">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone Number </th>
+            <td mat-cell *matCellDef="let row"> {{row.phone_no}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="role">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
+            <td mat-cell *matCellDef="let row"> {{row.role}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="update">
+            <th class="bg-primary" mat-header-cell *matHeaderCellDef mat-sort-header> Update </th>
+            <td mat-cell *matCellDef="let row"> <button>update</button></td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="delete">
+            <th  class="bg-danger"  mat-header-cell *matHeaderCellDef mat-sort-header> Delete </th>
+            <td  mat-cell *matCellDef="let row"><button>delete</button></td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+
+      </div>
+
+
+    </mat-tab>
+
+    <mat-tab label="Create Category">
+
+
+
+
+
+
+
+<div class="flex mt-10 flex-col p-4 gap-4">
+
+
+
+
+
+
+  <div class="example-action-buttons">
+    <button mat-button (click)="accordion.openAll()">Expand All</button>
+    <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+  </div>
+
+
+  <mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header >
+        <mat-panel-title class=" font-medium">Category
+        </mat-panel-title>
+        <mat-panel-description>
+          <h1></h1>
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <form class="example-container" [formGroup]="categoryFormGroup" (ngSubmit)="createCategory()">
+        <mat-form-field>
+          <mat-label>Category</mat-label>
+          <input matInput placeholder="department" formControlName="category" required>
+
+        </mat-form-field>
+        <div class="flex justify-end"><button type="submit" class="btn mt-4 bg-blue-600 px-2 py-1 text-white hover:bg-blue-700">Submit</button></div>
+      </form>
+
+    </mat-expansion-panel>
+
+    <!-- course -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header >
+        <mat-panel-title class=" font-medium">Course Category
+        </mat-panel-title>
+        <mat-panel-description>
+          <h1></h1>
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="">
+        <form  [formGroup]="CourseCategoryFormGroup" (ngSubmit)="createCourseCategory()">
+
+          <mat-form-field>
+            <mat-label>Department</mat-label>
+            <mat-select formControlName="department">
+              <mat-option *ngFor="let category of categories" value={{category.id}}>{{category.category}}</mat-option>
+
+            </mat-select>
+          </mat-form-field>
+
+        <!-- File Upload Input -->
+  <div class="example-full-width form-group mt-10  mb-10 pl-5  border-b-2  border-gray-500 bg-gray-100 items-center hover:bg-gray-200 ">
+    <label class="form-label text- xs text-gray-500 font-serif">Upload cover </label>
+    <input (change)="onCourseCoverSelect($event)"  type="file" name="file" accept=".jpg, .png, .pdf" class="w-full flex justify-between"> <!-- Adjust accepted file types as needed -->
+  </div>
+  <mat-form-field class="example-full-width">
+    <mat-label>Subject</mat-label>
+    <input matInput formControlName="subject" placeholder="Biology" >
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Grade</mat-label>
+    <input matInput formControlName="grade" type="number" placeholder="Biology" >
+  </mat-form-field>
+
+  <div class="flex justify-end">
+    <button type="submit" class="btn px-2 py-1 text-white bg-blue-600 hover:bg-blue-700">Submit</button>
+  </div>
+        </form>
+      </div>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header >
+        <mat-panel-title class=" font-medium">Course Category
+        </mat-panel-title>
+        <mat-panel-description>
+          <h1></h1>
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <ul class="p-2 items-start">
+        <li class=" items-start"><button class="font-medium hover:bg-blue-100 p-1 hover:text-blue-600 hover:font-medium w-full btn">Highschool</button></li>
+        <li class=" items-start"><button class="font-medium hover:bg-blue-100 p-1 hover:text-blue-600 hover:font-medium w-full btn">Healthy Science</button></li>
+        <li class=" items-start"><button class="font-medium hover:bg-blue-100 p-1 hover:text-blue-600 hover:font-medium w-full btn">Engineering</button></li>
+      </ul>
+
+
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header >
+        <mat-panel-title class=" font-medium">Course Category
+        </mat-panel-title>
+        <mat-panel-description>
+          <h1></h1>
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <ul class="p-2 items-start">
+        <li class=" items-start"><button class="font-medium hover:bg-blue-100 p-1 hover:text-blue-600 hover:font-medium w-full btn">Highschool</button></li>
+        <li class=" items-start"><button class="font-medium hover:bg-blue-100 p-1 hover:text-blue-600 hover:font-medium w-full btn">Healthy Science</button></li>
+        <li class=" items-start"><button class="font-medium hover:bg-blue-100 p-1 hover:text-blue-600 hover:font-medium w-full btn">Engineering</button></li>
+      </ul>
+
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+
+
+
+
+</div>
+
+
+
+
+    </mat-tab>
+
+
+  </mat-tab-group>
+
+  </nav>
+
+
+<div class="modal fade" id="coursemodal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">
+          <h1 class="text-lg font-medium"> {{selecterValue}} Registration</h1>
+        </div>
+        <button class="btn btn-close " data-bs-target="#coursemodal" data-bs-dismiss="modal"></button>
+      </div>
+
+      <form [formGroup]="CourseCategoryFormGroup"  (ngSubmit)=" createCourseCategory()">
+        <div class="modal-body">
+        <div class="form-group">
+          <label for="cover" class="form-label">Cover</label>
+          <input type="file" id="cover" (change)="onCourseCoverSelect($event)" class="form-control">
+        </div>
+
+
+        <div class="form-group "  [ngClass]="{hidden:selecterValue!='Engineering'}">
+          <label for="department" class="form-label">Department</label>
+          <input type="text" id="department" formControlName="department" class="form-control">
+        </div>
+
+        <div class="form-group " [ngClass]="{hidden:selecterValue!='Higschool'}">
+          <label for="grade" class="form-label">Grade</label>
+          <input type="number" id="grade" formControlName="grade" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="subject" class="form-label">Subject</label>
+          <select  type="text" id="subject" formControlName="subject" class="form-select">
+
+              <option *ngFor="let subject of selectedSubjects" value={{subject}}>{{subject}}</option>
+
+            </select>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button  type="submit"  class="btn btn-primary">Submit</button>
+      </div>
+      </form>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+    </main>
+    </div>

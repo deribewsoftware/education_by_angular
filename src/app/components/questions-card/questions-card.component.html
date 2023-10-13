@@ -1,0 +1,17 @@
+<div class="exam-question mt-6">
+
+  <div><span class="rounded-circle p-2 m-2 bg-blue-300 border-2 border-white">{{Q_no}}</span> {{question}}</div>
+
+  <div class="choose ml-10 p-2" *ngFor="let choice of choose; let j=index">
+    <div [class]=" choice.isCorrect && !hideExplanation? 'p-2 bg-green-100 rounded-lg':''"> <input type="radio" id="{{Q_no}}-{{j}}"   name='{{Q_no}}' class="mr-2 form-check-input border-gray-600"> <label for="{{Q_no}}-{{j}}" class="form-check-label"> {{choice.choose}}</label></div>
+
+</div>
+<button (click)="onExplanation(Q_no)" class="rounded-lg px-2 font-mono text-gray-600 font-semibold mt-4 hover:bg-blue-100" [ngClass]="{hidden:hideExplanation}">Explanation <i class="text-gray-600 font-semibold  bi " [ngClass]="{'bi-chevron-down':explanationData!=Q_no, 'bi-chevron-up':explanationData===Q_no}"></i></button>
+  <div class="bg-green-100 p-4 rounded-lg " [ngClass]="{hidden:explanationData!=Q_no, block:explanationData===Q_no}">
+    {{explanation}}
+  </div>
+
+
+
+
+</div>

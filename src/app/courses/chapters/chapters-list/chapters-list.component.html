@@ -1,0 +1,107 @@
+<div class="flex justify-center align-middle  lg:pb-20 lg:pt-10  w-screen">
+
+<div class="flex flex-col w-full lg:w-3/4 bg-gray-100 relative shadow-lg rounded-b-lg">
+
+  <!-- Courrse Banner -->
+<div class="h-[200px] w-full  bg-black rounded-t-lg">
+<img src={{course.cover}} alt="" class=" h-[200px] w-full object-cover  rounded-t-lg opacity-[0.6] ">
+</div>
+<!-- title -->
+<div class="flex flex-wrap justify-between p-10 absolute w-full lg:top-6 gap-2">
+  <h1 class="text-white font-sans font-semibold text-4xl">{{course.subject}}</h1>
+  <div class="flex justify-center ">
+    <a  [routerLink]="['/addchapter', course.id]" class="px-4 py-2 w-full  rounded-lg text-center font-serif text-black bg-gray-100 hover:bg-gray-200 " > <mat-icon class="pt-2 pb-2">add</mat-icon> <span class=" p-1 font-medium">Add New Chapter</span></a>
+  </div>
+</div>
+ <!-- Chapters -->
+<div class="flex flex-col pt-10 ">
+
+
+
+
+  <!-- Chapter title -->
+  <div class="flex justify-around border-b-2 border-gray-500 pt-6 text-start gap-2">
+<h1 class="font-medium font-sans text-start ml-2" >Chapter</h1>
+<h1 class="font-medium font-sans text-start flex-grow-1 ml-10 ">Title</h1>
+
+<h1 class="font-medium font-sans"></h1>
+  </div>
+
+
+   <div>
+
+
+<!-- Chapter content -->
+<div *ngFor="let chapter of chapters">
+   <div *ngIf="expandedId!=chapter.id" (click)="onexpanded(chapter.id)" class="flex justify-around border-b-2 border-gray-300 text-start hover:bg-gray-200 pt-6 gap-2">
+    <h1 class=" font-sans text-start  ml-2">{{chapter.chapter}}</h1>
+    <h1 class=" font-sans flex-grow-1 ml-10">{{chapter.title}}</h1>
+
+    <h1 class="font-serif">   <mat-icon [style.color]="'grey'">keyboard_arrow_down</mat-icon></h1>
+
+
+      </div>
+
+        <div *ngIf="expandedId==chapter.id" class="lg:pl-20 flex flex-col bg-white">
+          <!-- close button -->
+          <div class="flex justify-end m-2">
+
+             <a [routerLink]="['/lesson/create',course.id,chapter.id]" class="px-2 py-1 bg-gray-100 rounded-lg hover:bg-gray-200"> <mat-icon class="pt-1">add</mat-icon> Add New lesson</a>
+            <button (click)="onexpanded()" class="btn text-gray-500 hover:text-white hover:bg-red-400 px-2 pt-1 rounded text-center "><mat-icon>close</mat-icon></button>
+          </div>
+    <!-- title -->
+
+          <div class="flex justify-between border-b-2 border-gray-300 mb-10">
+            <div class="pt-10 text-gray-600 font-sans  font-medium text-lg">Chapter {{chapter.chapter}}:{{chapter.title}}</div>
+
+            <div class="flex justify-center   pt-10 pr-10">
+             <a [routerLink]="['/lesson/edit',course.id,chapter.id,1]" class="text-gray-400 hover:text-blue-600 hover:bg-blue-100 px-3 pt-1  text-center "><mat-icon>edit</mat-icon></a>
+             <div class="text-gray-400 hover:text-red-600 hover:bg-red-100 px-3 pt-1  text-center "><mat-icon>delete</mat-icon></div>
+
+          </div>
+          </div>
+
+          <!-- Lessons -->
+
+          <div class="p-4 pt-4">
+
+            <div *ngFor="let lesson of chapter.lessons; let i=index" class="  flex justify-around px-4 py-1 hover:bg-gray-100 font-normal font-mono ">
+              <a [routerLink]="['/course/chapter/lesson',this.lesson.id]"  class="hover:underline  hover:text-blue-600">Lesson {{i+1}}: {{lesson.title}}</a>
+               <div class="flex justify-around">
+                <a [routerLink]="['/lesson/edit',course.id,chapter.id,1]"> <mat-icon>edit</mat-icon></a>
+                <a> <mat-icon>delete</mat-icon></a>
+               </div>
+              </div>
+
+
+          </div>
+
+
+
+        </div>
+
+
+      </div>
+
+
+
+
+
+
+    </div>
+
+
+
+</div>
+
+</div>
+  <!-- <div class="bg-white shadow-lg rounded-2xl flex-col p-2 w-full lg:w-1/2 align-middle ">
+<h1 class="text-center text-3xl font-medium font-sans">Add {{course.subject}} Chapters</h1>
+<div class="mt-4 h-[200px] ">
+  <img src={{course.cover}}  class=" w-full h-full object-contain rounded-2xl" alt="">
+</div> -->
+
+
+  </div>
+
+

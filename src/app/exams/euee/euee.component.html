@@ -1,0 +1,209 @@
+
+<nav class="flex justify-between shadow-md bg-white w-full h-14 items-center text-sm">
+
+  <div>back</div>
+  <div class="text-gray-500 font-medium lg:text-lg ">{{subject}} Exams</div>
+  <div class=" flex gap-2 justify-center items-center lg:mr-10">
+    <div class="bg-blue-500 hover:bg-blue-600 text-white font-medium px-2 rounded-full ">Free Trials</div>
+  <button data-bs-toggle="modal" data-bs-target="#modal" class="bg-green-500 hover:bg-green-600 text-white font-medium px-2 rounded-full ">Unlock</button>
+  </div>
+
+</nav>
+
+   <app-side-nav [showSidebar]=ishidden></app-side-nav>
+<main class="main" id="main">
+
+
+  <div class="bg-white shadow-md rounded-lg  lg:m-4 flex flex-wrap justify-around pt-4 border-b-2 border-gray-300 text-gray-400  gap-0">
+
+
+    <div (click)="onTap('all')"  class="text-sm  hover:bg-blue-100 hover:text-blue-400 border-b-2  hover:border-blue-400  p-2" [ngClass]="{act:tabItem==='all'}">All</div>
+    <div  (click)="onTap('9')" class="text-sm  hover:bg-blue-100 hover:text-blue-400 border-b-2  hover:border-blue-400  p-2" [ngClass]="{act:tabItem==='9'}">Grade 9</div>
+    <div (click)="onTap('10')"  class="text-sm  hover:bg-blue-100 hover:text-blue-400 border-b-2  hover:border-blue-400  p-2" [ngClass]="{act:tabItem==='10'}">Grade 10 </div>
+    <div  (click)="onTap('11')"  class="text-sm text-gray-400 hover:bg-blue-100 hover:text-blue-400 border-b-2  hover:border-blue-400  p-2" [ngClass]="{act:tabItem==='11'}">Grade 11</div>
+    <div  (click)="onTap('12')"  class="text-sm text-gray-400 hover:bg-blue-100 hover:text-blue-400 border-b-2  hover:border-blue-400  p-2" [ngClass]="{act:tabItem==='12'}">Grade 12</div>
+
+
+  </div>
+
+  <!-- All Exams -->
+
+  <div *ngIf="tabItem==='all'" class="flex flex-wrap gap-4 justify-around mt-10 ">
+    <!-- 2015 -->
+      <app-exams-card
+      [routeDirection]="'/questions/'"
+[routeDirectionId]="subject"
+[routerIdTwo]="2015"
+      [logo]="'https://cdn2.f-cdn.com/contestentries/291988/8308607/562cc2d2b11eb_thumb900.jpg'"
+
+      [year]="2015"
+      >
+    </app-exams-card>
+
+    <!-- 2014 -->
+    <app-exams-card
+    [routeDirection]="'/questions/'"
+    [routeDirectionId]="subject"
+[routerIdTwo]="2014"
+
+    [logo]="'https://cdn2.f-cdn.com/contestentries/291988/8308607/562cc2d2b11eb_thumb900.jpg'"
+
+    [year]="2014"
+    >
+  </app-exams-card>
+
+  <!-- 2013 -->
+  <app-exams-card
+  [routeDirection]="'/questions/'"
+  [routeDirectionId]="subject"
+[routerIdTwo]="2013"
+  [logo]="'https://cdn2.f-cdn.com/contestentries/291988/8308607/562cc2d2b11eb_thumb900.jpg'"
+  [subject]="subject"
+  [year]="2013"
+  >
+</app-exams-card>
+
+<!-- 2011 -->
+<app-exams-card
+[routeDirection]="'/questions/'"
+[routeDirectionId]="subject"
+[routerIdTwo]="2011"
+[logo]="'https://cdn2.f-cdn.com/contestentries/291988/8308607/562cc2d2b11eb_thumb900.jpg'"
+[subject]="subject"
+[year]="2011"
+>
+</app-exams-card>
+
+<!-- 2010 -->
+<app-exams-card
+[routeDirection]="'/questions/'"
+[routeDirectionId]="subject"
+[routerIdTwo]="2010"
+
+[logo]="'https://cdn2.f-cdn.com/contestentries/291988/8308607/562cc2d2b11eb_thumb900.jpg'"
+[subject]="subject"
+[year]="2010"
+>
+</app-exams-card>
+
+<!-- 2009 -->
+<app-exams-card
+[routeDirection]="'/questions/'"
+    [routerIdTwo]="2009"
+    [routeDirectionId]="subject"
+[logo]="'https://cdn2.f-cdn.com/contestentries/291988/8308607/562cc2d2b11eb_thumb900.jpg'"
+[subject]="subject"
+[year]="2009"
+>
+</app-exams-card>
+
+
+
+
+  </div>
+
+  <!-- Grade 9 Exams -->
+
+
+  <div *ngIf="tabItem==='9'" class="flex flex-wrap gap-4 justify-around mt-10 ">
+    <!-- Chapter One=Biology science -->
+      <app-exams-card
+      [routeDirection]="'/questions/'"
+[routeDirectionId]="subject"
+[routerIdTwo]="2015"
+      [logo]="'https://cdn2.f-cdn.com/contestentries/291988/8308607/562cc2d2b11eb_thumb900.jpg'"
+
+      [year]="10"
+      subject="Biology science"
+      >
+    </app-exams-card>
+
+   <!-- Chapter Two=Cell Theory -->
+    <app-exams-card
+    [routeDirection]="'/questions/'"
+    [routeDirectionId]="subject"
+[routerIdTwo]="2014"
+
+    [logo]="'https://cdn2.f-cdn.com/contestentries/291988/8308607/562cc2d2b11eb_thumb900.jpg'"
+
+    [year]="10"
+    subject="Cell Theory"
+    >
+  </app-exams-card>
+
+  <!-- Chapter Three=Biology and Healthy -->
+  <app-exams-card
+  [routeDirection]="'/questions/'"
+  [routeDirectionId]="subject"
+[routerIdTwo]="2013"
+  [logo]="'https://cdn2.f-cdn.com/contestentries/291988/8308607/562cc2d2b11eb_thumb900.jpg'"
+
+  [year]="10"
+  subject="Biology and Human Healthy "
+  >
+</app-exams-card>
+
+<!-- Chapter Four=Microorgaism -->
+<app-exams-card
+[routeDirection]="'/questions/'"
+[routeDirectionId]="subject"
+[routerIdTwo]="2011"
+[logo]="'https://cdn2.f-cdn.com/contestentries/291988/8308607/562cc2d2b11eb_thumb900.jpg'"
+[year]="10"
+subject="Microorganism"
+>
+</app-exams-card>
+
+<!-- Chapter Five=Classification-->
+<app-exams-card
+[routeDirection]="'/questions/'"
+[routeDirectionId]="subject"
+[routerIdTwo]="2010"
+
+[logo]="'https://cdn2.f-cdn.com/contestentries/291988/8308607/562cc2d2b11eb_thumb900.jpg'"
+[year]="10"
+subject="Classification "
+>
+</app-exams-card>
+
+<!-- Chapter Six=Ecology -->
+<app-exams-card
+[routeDirection]="'/questions/'"
+    [routerIdTwo]="2009"
+    [routeDirectionId]="subject"
+[logo]="'https://cdn2.f-cdn.com/contestentries/291988/8308607/562cc2d2b11eb_thumb900.jpg'"
+[year]="10"
+subject="Ecology "
+>
+</app-exams-card>
+
+
+
+
+  </div>
+
+
+
+</main>
+
+ <!-- Modals -->
+ <div class="modal fade" id="modal">
+  <div class="modal-dialog">
+    <div class="modal-content z-50" >
+     <div class="modal-header">
+      <h1>Your Exam Result is:-</h1>
+      <button class="btn-close" data-bs-dismiss="modal" data-bs-target="#modal"></button>
+     </div>
+
+     <div class="modal-body flex justify-around ">
+      <div class="rounded-circle w-[100px] h-[100px] border-2  pt-10 pl-6 border-gray-400 items-center"> 20/100</div>
+     </div>
+     <div class="modal-footer">
+      <button class="btn btn-danger " data-bs-dismiss="modal" data-bs-target="#modal">Close</button>
+      <button class="btn btn-success " data-bs-dismiss="modal" data-bs-target="#modal">Ok</button>
+     </div>
+    </div>
+
+  </div>
+
+</div>

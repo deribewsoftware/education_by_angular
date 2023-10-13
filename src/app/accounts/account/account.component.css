@@ -1,0 +1,33 @@
+
+#account{
+
+  margin-top: 60px;
+}
+@media (min-width: 1200px) {
+  #account{
+    margin-left: 290px;
+    margin-top: 60px;
+  }
+
+  }
+
+  .button-animate{
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    -webkit-transition: background-color 0.3s ease;
+    -moz-transition: background-color 0.3s ease;
+    -ms-transition: background-color 0.3s ease;
+    -o-transition: background-color 0.3s ease;
+}
+
+
+.act{
+  color: #3b82f6;
+  font-weight: 500;
+  border-bottom-width: 2px;
+  border-color: #3b82f6;
+}
+
+
+
+

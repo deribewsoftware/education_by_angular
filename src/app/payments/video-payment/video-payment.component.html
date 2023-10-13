@@ -1,0 +1,51 @@
+<div class="flex justify-center mt-40 ">
+  <form action="" [formGroup]="paymentGroup" (ngSubmit)="onVideoPayment()">
+
+  <div class="bg-green-50  shadow-md rounded-lg p-2">
+ <h1 class=" p-4 text-primary text-lg font-medium">Unlock Your Potential with <span class="font-semibold text-gray-900">{{videoOnPayment.title}} </span>Course</h1>
+ <p class="text-gray-600 font-medium text-md font-sans ml-20">The Exam Price is <span class="text-green-800 font-semibold  underline">{{videoOnPayment.price}}ETB</span> Only</p>
+
+<div class="m-4 bg-blue-100 border-l-2 border-blue-600 p-4 items-center">
+<p class="text-gray-400  font-medium text-xs">Please Check Your Saving Account Balance to you have enough Balance to buy this Exam</p>
+<p class="text-slate-400  font-medium text-xs mt-2 p-2 ">After Bought Exam Your Balance is <span class="text-orange-600 font-semibold  underline">Saving Balance- {{videoOnPayment.price}}ETB</span></p>
+<a routerLink="/savingaccount" class="btn btn-info text-white text-sm items-center mt-4">See Your Saving Account</a>
+
+
+
+<div [ngSwitch]="message" >
+  <div *ngSwitchCase="'success'" class="bg-green-100 p-2 border-l-2 border-green-500  flex justify-center flex-wrap mt-10">
+   <div class="text-green-500 p-3"><strong class="text-green-600">Thank You!</strong> You Successfully Buy Course</div>
+  </div>
+  <!-- <div *ngSwitchCase="'insufficient'" class="bg-red-100 p-2 border-l-2 border-red-500  flex justify-center flex-wrap mt-10">
+    <div class="text-red-500 p-3"><strong class="text-red-600">Sorry!</strong> You have insufficient balance to buy this course please Charge your Saving Account</div>
+    <a routerLink="/savingaccount" class="btn btn-danger pt-2">Charge</a>
+  </div> -->
+
+
+  <div *ngSwitchCase="'error'" class="bg-red-100 p-2 border-l-2 border-red-500  flex justify-center flex-wrap mt-10">
+    <div class="text-red-500 p-3"><strong class="text-red-600">Sorry! </strong>{{errorMessage}}</div>
+    <a routerLink="/savingaccount" class="btn btn-danger pt-2">Create Saving Account</a>
+  </div>
+
+
+  <div *ngSwitchCase="'noAccount'">Content for Case 3</div>
+  <div *ngSwitchDefault>Default Content</div>
+</div>
+
+
+
+
+
+</div>
+ <div class="footer mb-0 mt-6 flex justify-end">
+  <a class="btn btn-primary px-2 mr-4">see Trials</a>
+  <button type="submit" class="btn btn-success px-2 bg-green-500">Buy Course</button>
+
+    </div>
+
+  </div>
+</form>
+
+
+
+</div>

@@ -1,0 +1,47 @@
+.course-header{
+  font-family: Roboto;
+}
+.btn{
+  font-family: Poppins;
+  color:gray;
+  font-weight: 600;
+}
+
+
+
+
+
+
+.activate{
+  color: white;
+  border-width: 2px;
+  border:none;
+  border-bottom: 3px solid white;
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+
+.items{
+  transition: all 2s ease-out;
+  -webkit-transition: all 2s ease-out;
+  -moz-transition: all 2s ease-out;
+  -ms-transition: all 2s ease-out;
+  -o-transition: all 2s ease-out;
+  -webkit-transform: translateX(100);
+  -moz-transform: translateX(100);
+  -ms-transform: translateX(100);
+  -o-transform: translateX(100);
+}
+
+.move-item{
+  transition: all 0.5s linear;
+  transform: translateX(-290px);
+  -webkit-transform: translateX(-290px);
+  -moz-transform: translateX(-290px);
+  -ms-transform: translateX(-290px);
+  -o-transform: translateX(-290px);
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+}

@@ -1,0 +1,24 @@
+<div class="flex justify-center mt-40 ">
+  <form action="" [formGroup]="paymentGroup" (ngSubmit)="onPayExams()">
+
+  <div class="bg-green-50  shadow-md rounded-lg p-2">
+ <h1 class=" p-4 text-primary text-lg font-medium">Unlock Your Potential with <span class="font-semibold text-gray-900">{{examOnPayment.subject}} </span>Exams</h1>
+ <p class="text-gray-600 font-medium text-md font-sans ml-20">The Exam Price is{{isBought}}{{userId}} <span class="text-green-800 font-semibold  underline">{{examOnPayment.price}}ETB</span> Only</p>
+
+<div class="m-4 bg-blue-100 border-l-2 border-blue-600 p-4 items-center">
+<p class="text-gray-400  font-medium text-xs">Please Check Your Saving Account Balance to you have enough Balance to buy this Exam</p>
+<p class="text-slate-400  font-medium text-xs mt-2 p-2 ">After Bought Exam Your Balance is <span class="text-orange-600 font-semibold  underline">Saving Balance- {{examOnPayment.price}}ETB</span></p>
+<a routerLink="/savingaccount" class="btn btn-info text-white text-sm items-center mt-4">See Your Saving Account</a>
+</div>
+ <div class="footer mb-0 mt-6 flex justify-end">
+  <a class="btn btn-primary px-2 mr-4">see Trials</a>
+  <button type="submit" class="btn btn-success px-2">Buy Exam</button>
+
+    </div>
+
+  </div>
+</form>
+
+
+
+</div>

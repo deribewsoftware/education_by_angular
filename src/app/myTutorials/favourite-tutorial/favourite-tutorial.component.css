@@ -1,0 +1,55 @@
+*{
+  box-sizing: border-box;
+}
+
+.card{
+  margin: 5px;
+  width: 250px;
+  position: relative;
+
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.card-image{
+
+  top:20px;
+  position:absolute;
+  background-color: #0d6efd;;
+  padding: 3px;
+
+}
+.card-content{
+ display: flex;
+ justify-content: center;
+}
+
+.card-image,.card-image img{
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.card-image img{
+  object-fit: cover;
+  border: 3px solid white;
+  height: 100px;
+  width: 100px;
+}
+.card::before{
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+
+  content: '';
+  background-color: #0d6efd;;
+  height: 90px;
+}
+
+.card:hover .course-content {
+  display: block;
+}

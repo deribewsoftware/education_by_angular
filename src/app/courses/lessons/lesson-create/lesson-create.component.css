@@ -1,0 +1,29 @@
+button:hover{
+  background-color: #40576d1a;
+}
+
+button:focus{
+  background-color: #73b1e333;
+  color:#5271ff
+}
+input[type="color"]{
+  background-color: transparent;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+}
+input[type="color"]::-webkit-color-swatch{
+ border-radius: 15px;
+ -webkit-border-radius: 15px;
+ -moz-border-radius: 15px;
+ -ms-border-radius: 15px;
+ -o-border-radius: 15px;
+}
+
+@keyframes fadeInOut {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

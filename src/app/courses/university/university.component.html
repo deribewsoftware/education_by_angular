@@ -1,0 +1,88 @@
+
+
+  <app-header (ishidden)="onhidden($event)" [showSidebar]=ishidden></app-header>
+
+  <app-side-nav [showSidebar]=ishidden></app-side-nav>
+
+
+<div [ngClass]="{'toggle-sidebar':ishidden}">
+
+
+
+
+
+
+
+
+<!-- main contents -->
+
+<main class="main" id="main">
+
+  <div class="flex  flex-col gap-6 mt-10 bg-blue-600 items-center shadow-md shadow-blue-600">
+    <div class="text-white text-2xl font-medium pt-8 ">{{categories.category}}</div>
+
+    <div class="flex justify-around border-b-2 border-gray-100 w-full ">
+
+      <button (click)="onTab('Courses')" class="text-gray-300 p-2 hover:text-gray-100 " [ngClass]="{activate:categorySelected==='Courses'}">Courses</button>
+      <button (click)="onTab('Videos')"  class="text-gray-300 p-2 hover:text-gray-100 " [ngClass]="{activate:categorySelected==='Videos'}">Videos</button>
+      <button (click)="onTab('Books')"  class="text-gray-300 p-2 hover:text-gray-100 " [ngClass]="{activate:categorySelected==='Books'}">Books</button>
+      <button (click)="onTab('Exams')"  class="text-gray-300 p-2 hover:text-gray-100 " [ngClass]="{activate:categorySelected==='Exams'}">Exams</button>
+
+    </div>
+
+  </div>
+
+
+  <!-- card lists -->
+  <div class="flex flex-col justify-around gap-3 mt-20 w-full relative">
+
+<!-- Courses -->
+   <app-card-layout-component [categories]="categories.courses" [categorySelected]="categorySelected" [categoryType]="'Courses'"></app-card-layout-component>
+
+
+
+    <!-- Videos -->
+    <app-card-layout-component [categories]="categories.videos" [categorySelected]="categorySelected" [categoryType]="'Videos'"></app-card-layout-component>
+
+
+    <!-- Books -->
+    <app-card-layout-component [categories]="categories.books" [categorySelected]="categorySelected" [categoryType]="'Books'"></app-card-layout-component>
+
+
+
+    <!-- Exams -->
+    <app-card-layout-component [categories]="categories.exams" [categorySelected]="categorySelected" [categoryType]="'Exams'"></app-card-layout-component>
+
+
+
+
+
+
+
+<!-- Loading.... -->
+
+    <div *ngIf="isLoading" class="absolute w-[100%] h-[100%] flex justify-center align-middle bg-slate-50 lg:pt-28">
+      <div class="spinner-border text-blue-600 font-bold text-4xl  h-20 w-20 mt-32"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+</main>
+<app-footer></app-footer>
+</div>
+

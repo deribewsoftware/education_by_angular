@@ -1,0 +1,59 @@
+<app-header (ishidden)="onhidden($event)"></app-header>
+
+   <app-side-nav [showSidebar]=ishidden></app-side-nav>
+<main class="main" id="main">
+
+  <div class="bg-white shadow-md rounded-lg p-4 lg:m-4">
+    <mat-tab-group mat-stretch-tabs="true" mat-align-tabs="start">
+      <mat-tab label="Balance">
+        <div class="p-2 flex flex-col justify-between">
+        <div class="text-md "><span class="mr-4">Your Balance</span> <span class="ml-4 font-semibold">{{ mySavingAccount.balance}}ETB</span></div>
+
+        <div class="mt-10">
+          <div>Transactions</div>
+
+          <ul *ngFor="let transaction of  mySavingAccount.transactions">
+            <li class="text-gray-400 text-xs font-thin"> <span class="p-1">{{transaction.bankTransactionId}}</span>  <span class="p-1">{{transaction.saveBalance}}ETB</span> <span class="p-1">{{transaction.updatedAt|date}}</span> <span class="p-1">{{transaction.status}}</span></li>
+          </ul>
+        </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Charge">
+        <div class=" flex justify-center p-2 lg:p-6">
+
+          <form [formGroup]="transactionForm" (ngSubmit)="onCreatePaymenOnSaving()" class="p-2">
+            <div class="form-group mt-4">
+              <label for="receipt" class="form-label text-sm font-medium">Bank Receipt</label>
+              <input type="file" class="form-control"  multiple (change)="onFileSelected($event)"   id="receipt">
+
+            </div>
+
+
+            <div class="form-group mt-4">
+              <label for="transId" class="form-label text-sm font-medium">Transaction Id</label>
+              <input type="text" class="form-control" id="transId" formControlName="bankTransactionId" placeholder="enter transaction id">
+
+            </div>
+
+            <div class="form-group mt-4">
+              <label for="savebalance" class="form-label text-sm font-medium">Save Balance</label>
+              <input type="number" class="form-control" id="savebalance" formControlName="saveBalance" placeholder="enter the amount of you save balance">
+
+            </div>
+
+            <div class="flex justify-end mt-10 ">
+              <button type="submit" class="bg-green-500 hover:bg-green-600 px-2 rounded-lg text-white font-medium">Submit</button>
+
+            </div>
+
+          </form>
+
+
+        </div>
+      </mat-tab>
+      <mat-tab label="withdraw">withdraw</mat-tab>
+    </mat-tab-group>
+
+  </div>
+
+</main>

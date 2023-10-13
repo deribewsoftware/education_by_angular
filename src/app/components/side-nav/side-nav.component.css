@@ -1,0 +1,319 @@
+/*--------------------------------------------------------------
+# Sidebar
+--------------------------------------------------------------*/
+.sidebar {
+  position: fixed;
+
+  top: 50px;
+  left: 0;
+  bottom: 0;
+  width: 290px;
+  z-index: 996;
+  transition: all 0.3s;
+  padding: 20px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #aab7cf transparent;
+  box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+  background-color: #fff;
+}
+
+
+
+
+@media (max-width: 1199px) {
+  .sidebar {
+    left:-300px;
+  }
+}
+
+
+
+
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: #fff;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #aab7cf;
+}
+
+
+
+
+
+
+
+
+@media (min-width: 1200px) {
+
+  #main,
+  #footer {
+    margin-left: 300px;
+  }
+}
+
+
+
+
+@media (max-width: 1199px) {
+  .toggle-sidebar .sidebar {
+    left: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .toggle-sidebar #main,
+  .toggle-sidebar #footer {
+    margin-left: 0;
+  }
+
+  .toggle-sidebar .sidebar {
+    left: -300px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sidebar-nav {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidebar-nav .nav-item {
+  margin-bottom: 5px;
+}
+
+.sidebar-nav .nav-heading {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #899bbd;
+  font-weight: 600;
+  margin: 10px 0 5px 15px;
+}
+
+.sidebar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+
+  transition: 0.3;
+
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+
+.active{
+  color: #4154f1;
+  background: #f6f9ff;
+}
+.sidebar-nav .nav-link i {
+  font-size: 16px;
+  margin-right: 10px;
+
+}
+
+.sidebar-nav .nav-link.collapsed {
+  color: #012970;
+  background: #fff;
+}
+
+.sidebar-nav .nav-link.collapsed i {
+  color: #899bbd;
+}
+
+.sidebar-nav .nav-link:hover {
+  color: #4154f1;
+  background: #f6f9ff;
+}
+
+.sidebar-nav .nav-link:hover i {
+  color: #4154f1;
+}
+
+.sidebar-nav .nav-link .bi-chevron-down {
+  margin-right: 0;
+  transition: transform 0.2s ease-in-out;
+}
+
+.sidebar-nav .nav-link:not(.collapsed) .bi-chevron-down {
+  transform: rotate(180deg);
+}
+
+.sidebar-nav .nav-content {
+  padding: 5px 0 0 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidebar-nav .nav-content a {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #012970;
+  transition: 0.3;
+  padding: 10px 0 10px 40px;
+  transition: 0.3s;
+}
+
+.sidebar-nav .nav-content a i {
+  font-size: 6px;
+  margin-right: 8px;
+  line-height: 0;
+  border-radius: 50%;
+}
+
+.sidebar-nav .nav-content a:hover,
+.sidebar-nav .nav-content a.active {
+  color: #4154f1;
+}
+
+.sidebar-nav .nav-content a.active i {
+  background-color: #4154f1;
+}
+
+/* modals */
+
+
+.mod{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transition: all 0.5s ease-in-out;
+}
+
+
+
+.mod-overlay{
+ background-color: rgba(0, 0, 0, 0.5);
+ position: absolute;
+ height: 100%;
+ width: 100%;
+ transition: all 0.5s ease-in-out;
+ animation-name: modal-overlay;
+ animation-timing-function: ease-in-out;
+ animation-duration: 0.5s;
+ -webkit-transition: all 0.5s ease-in-out;
+ -moz-transition: all 0.5s ease-in-out;
+ -ms-transition: all 0.5s ease-in-out;
+ -o-transition: all 0.5s ease-in-out;
+}
+
+
+
+
+.mod-content{
+
+
+  transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  animation-name: modal-content;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+}
+
+
+
+.mod-header{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+
+
+
+
+.mod-title{
+font-weight: 500;
+
+}
+
+
+
+.close-btn{
+display: flex;
+justify-content: end;
+}
+
+
+
+.mod-body{
+padding: 4px;
+}
+
+
+
+.mod-footer{
+display: flex;
+justify-content: end;
+}
+
+
+
+@keyframes modal-content{
+  from{
+      opacity: 0;
+      transform: translateY(-800px);
+  }
+
+
+
+
+
+
+  to{
+      opacity: 1;
+      transform: translateY(0px);
+  }
+}
+
+@keyframes modal-overlay{
+  from{
+      opacity: 0;
+
+  }
+  to{
+      opacity: 1;
+
+  }
+}
+
+
+
+
+#modal,#modal-overlay,#modal-content{
+display: none;
+
+}

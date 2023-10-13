@@ -1,0 +1,69 @@
+
+<div class="card bg-white shadow-md hover:shadow-lg rounded-lg   w-[300px]  flex  flex-col justify-center relative ">
+  <div class=" top-0 right-0">
+
+    <div class="relative rounded-full z-50  h-6 w-6   bg-slate-500 ">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon [style.color]="'white'">more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+
+        <a [routerLink]="['/edit/course',cardId]" mat-menu-item [style.color]="'green'">
+          <mat-icon  [style.color]="'green'">edit</mat-icon>
+          <span>Edit</span>
+        </a>
+        <button mat-menu-item [style.color]="'red'">
+          <mat-icon  [style.color]="'red'">delete</mat-icon>
+          <span>Delete</span>
+        </button>
+
+        <a  [routerLink]="['/learners/course', cardId]" mat-menu-item [style.color]="'blue'">
+          <mat-icon  [style.color]="'blue'">people</mat-icon>
+          <span>Learners</span>
+        </a>
+
+        <a  [routerLink]="['/chapterslist',cardId]" mat-menu-item [style.color]="'indigo'">
+          <mat-icon  [style.color]="'indigo'">category</mat-icon>
+          <span>Chapters</span>
+        </a>
+
+        <a   [routerLink]="['/addchapter', cardId]"mat-menu-item [style.color]="'teal'">
+          <mat-icon  [style.color]="'teal'">add</mat-icon>
+          <span>Add Chapter</span>
+        </a>
+      </mat-menu>
+    </div>
+
+</div>
+
+
+  <a [routerLink]="[routerDirect, cardId]">
+  <div class="relative ">
+
+  <img class="rounded-t-lg h-[200px] w-full" src={{cover}} alt="chemistry">
+  <div class="absolute bg-orange-400 top-4 px-2 rounded-r-full ">New</div>
+
+</div>
+<div class="flex justify-between p-2">
+  <div class="font-semibold">{{subject}}</div>
+  <div class="text-sm font-semibold text-gray-400 ">20 Lessons</div>
+  <div class="text-sm font-semibold text-gray-400 ">Grade {{grade}}</div>
+
+</div>
+
+<div class="flex justify-between p-2">
+  <div class="text-sm text-gray-400 font-medium ">20 likes</div>
+  <div class="text-sm text-gray-400 font-medium ">12 views</div>
+  <div class="text-sm bg-green-200 px-1 rounded-full text-black font-semibold ">{{price}}ETB</div>
+
+</div>
+</a>
+
+
+</div>
+
+
+
+
+
+

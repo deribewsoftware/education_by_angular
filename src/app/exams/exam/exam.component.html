@@ -1,0 +1,109 @@
+
+<app-header (ishidden)="onhidden($event)" [showSidebar]=ishidden></app-header>
+
+   <app-side-nav [showSidebar]=ishidden></app-side-nav>
+   <div [ngClass]="{'toggle-sidebar':ishidden}">
+<main class="main" id="main">
+
+  <div class="bg-white shadow-md rounded-lg  lg:m-4 flex flex-wrap justify-around pt-4 border-b-2 border-gray-300 text-gray-400  gap-0">
+
+
+    <div (click)="onTap('EUEE')" class="text-sm  hover:bg-blue-100 hover:text-blue-400 border-b-2  hover:border-blue-400  p-2" [ngClass]="{act:tabItem==='EUEE'}">EUEE</div>
+    <div (click)="onTap('Freshman')" class="text-sm  hover:bg-blue-100 hover:text-blue-400 border-b-2  hover:border-blue-400  p-2" [ngClass]="{act:tabItem==='Freshman'}">Freshman Exam</div>
+    <div  (click)="onTap('Coc')" class="text-sm  hover:bg-blue-100 hover:text-blue-400 border-b-2  hover:border-blue-400  p-2" [ngClass]="{act:tabItem==='Coc'}">COC Exam</div>
+    <div (click)="onTap('Exit')"  class="text-sm text-gray-400 hover:bg-blue-100 hover:text-blue-400 border-b-2  hover:border-blue-400  p-2 " [ngClass]="{act:tabItem==='Exit'}">Exit Exam</div>
+
+
+  </div>
+
+<!-- EUEE -->
+  <div *ngIf="tabItem==='EUEE'" class="flex flex-wrap gap-4 justify-around mt-10 ">
+    <div *ngFor="let exam of exams; let i=index">
+
+      <button (click)="navigateToExamDetails(i)">
+      <app-exams-card
+      [isBought]="isBought[i]"
+      [logo]="exam.cover"
+      [subjectId]="exam.id"
+      [routeDirection]="'/examssss/'"
+      [routeDirectionId]="'payment'"
+      [routerIdTwo]="exam.id"
+      [subject]="exam.subject"
+      year="2010-2015 E.C Years Exams"
+      [price]="exam.price+'ETB'"
+      [views]="exam.viewsCount+' views'"
+      [likes]="exam.likesCount+' likes'"
+      ></app-exams-card>
+
+    </button>
+    </div>
+  </div>
+
+  <!-- Freshman Exams -->
+  <div *ngIf="tabItem==='Freshman'" class="flex flex-wrap gap-4 justify-around mt-10 ">
+    <div *ngFor="let Freshexam of FreshmanExams; let i=index">
+      <button (click)="navigateToFreshmanExams(i)">
+      <app-exams-card
+      [isBought]="isBought[i]"
+      [logo]="Freshexam.cover"
+      [subjectId]="Freshexam.id"
+      [routeDirection]="'/examssss/'"
+      [routeDirectionId]="'payment'"
+      [routerIdTwo]="Freshexam.id"
+      [subject]="Freshexam.subject"
+      year="2010-2015 E.C Years Exams"
+      [price]="Freshexam.price+'ETB'"
+      [views]="Freshexam.viewsCount+' views'"
+      [likes]="Freshexam.likesCount+' likes'"
+      ></app-exams-card>
+    </button>
+    </div>
+  </div>
+
+
+  <!-- Coc Exams -->
+  <div *ngIf="tabItem==='Coc'" class="flex flex-wrap gap-4 justify-around mt-10 ">
+    <div *ngFor="let exam of CocExams; let i=index">
+      <button (click)="navigateToCOCExams(i)">
+        <app-exams-card
+        [isBought]="isBought[i]"
+        [logo]="exam.cover"
+        [subjectId]="exam.id"
+        [routeDirection]="'/examssss/'"
+        [routeDirectionId]="'payment'"
+        [routerIdTwo]="exam.id"
+        [subject]="exam.subject"
+        year="2010-2015 E.C Years Exams"
+        [price]="exam.price+'ETB'"
+        [views]="exam.viewsCount+' views'"
+        [likes]="exam.likesCount+' likes'"
+        ></app-exams-card>
+      </button>
+    </div>
+  </div>
+
+  <!-- Exit Exams -->
+  <div *ngIf="tabItem==='Exit'" class="flex flex-wrap gap-4 justify-around mt-10 ">
+    <div *ngFor="let exam of ExitExams; let i=index">
+      <button (click)="navigateToExitExams(i)">
+        <app-exams-card
+        [isBought]="isBought[i]"
+        [logo]="exam.cover"
+        [subjectId]="exam.id"
+        [routeDirection]="'/examssss/'"
+        [routeDirectionId]="'payment'"
+        [routerIdTwo]="exam.id"
+        [subject]="exam.subject"
+        year="2010-2015 E.C Years Exams"
+        [price]="exam.price+'ETB'"
+        [views]="exam.viewsCount+' views'"
+        [likes]="exam.likesCount+' likes'"
+        ></app-exams-card>
+      </button>
+    </div>
+  </div>
+
+
+
+</main>
+</div>

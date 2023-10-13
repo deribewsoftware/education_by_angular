@@ -1,0 +1,83 @@
+<div class=" flex flex-col p-10 m-10 justify-center " >
+
+<div class="flex justify-center" > <h1 class="text-2xl font-semibold p-6 text-gray-600 font-serif">{{course.subject}} Learners <span class="text-gray-600 text-xl">({{course.buyersCount}})</span> </h1></div>
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef='photo'>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Photo </th>
+        <td mat-cell *matCellDef="let row"> <img src={{row.profileImage}} height="60px" width="60px" alt="" class="rounded-lg  object-contain"></td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef='fullName'>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.firstName}} {{row.lastName}} </td>
+      </ng-container>
+
+      <!-- department -->
+      <ng-container matColumnDef='department'>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> department </th>
+        <td mat-cell *matCellDef="let row"> {{row.department}} </td>
+      </ng-container>
+
+      <!-- phone_no -->
+
+       <ng-container matColumnDef='phone_no'>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> <mat-icon>phone</mat-icon>  </th>
+        <td mat-cell *matCellDef="let row"> {{row.phone_no}} </td>
+      </ng-container>
+
+      <!-- 'mark' -->
+      <ng-container matColumnDef='mark'>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Mark  </th>
+        <td mat-cell *matCellDef="let row"> <div><p>20%</p></div></td>
+      </ng-container>
+
+
+      <!-- status -->
+      <ng-container matColumnDef='status'>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+        <td mat-cell *matCellDef="let row"> <div class="rounded-full px-4 py-1 bg-red-200 font-medium">incompleted</div> </td>
+      </ng-container>
+
+
+      <!-- certify -->
+      <ng-container matColumnDef='certify'>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Certify </th>
+        <td mat-cell *matCellDef="let row"> <mat-icon></mat-icon></td>
+      </ng-container>
+
+
+      <!-- notify -->
+      <ng-container matColumnDef='notify'>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Notify  </th>
+        <td mat-cell *matCellDef="let row"> <button class="bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded-md "><i class="bi bi-bell text-white font-bold"></i></button></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+
+
+</div>

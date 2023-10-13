@@ -1,0 +1,27 @@
+
+<div class="flex justify-center p-1 pt-10">
+
+  <div class="bg-yellow-50 p-4 lg:mt-40  lg:w-[600px] shadow-md rounded-lg">
+    <form [formGroup]="createAccountForm" (ngSubmit)="onCreateAccount()">
+
+      <div class="form-group p-2 mt-4">
+        <label for="account_name" class="form-label text-sm font-medium">Account Name</label>
+        <input type="text" id="account_name" formControlName="accountName" class="form-control">
+
+      </div>
+
+      <div class="form-group p-2 mt-4">
+        <label for="account_logo" class="form-label text-sm font-medium">Account Logo</label>
+        <input type="file" id="account_logo" class="form-control" (change)="onFileSelected($event)">
+
+      </div>
+
+<div class="flex justify-end mt-10">
+  <button type="submit" class="btn bg-green-500 hover:bg-green-600 text-white font-medium">Submit</button>
+
+</div>
+    </form>
+
+  </div>
+
+</div>

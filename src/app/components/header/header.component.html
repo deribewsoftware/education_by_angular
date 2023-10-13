@@ -1,0 +1,302 @@
+
+  <!-- ======= Header ======= -->
+
+  <header  class="flex flex-col header fixed-top  " >
+
+
+    <div  class="  header-one fixed-top  d-flex align-items-center border-b-2 border-gray-200" id="header">
+
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">Talento</span>
+      </a>
+
+      <i (click)="onToggle()" class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+<div class="relative category z-20">
+<h1 class="flex text-lg font-sans font-medium py-2"><span>category </span><span><i class="bi pt-1 font-medium text-lg bi-chevron-down"></i></span></h1>
+
+<div class=" bg-white shadow-sm  category-absolute top-10 mr-40 absolute index">
+<div *ngFor="let cat of category" class="flex flex-col gap-1 px-2 hover:bg-gray-100">
+  <div class="relative w-40 align-middle py-2 sub-category">
+ <a [routerLink]="['/courses/university/refresher',cat.id]" class="text-sm font-sans hover:text-blue-600 hover:underline hover:font-medium ">{{cat.category}}</a>
+
+ <div class="left-40 top-0 w-64 bg-white sub-category-absolute absolute shadow-sm  ">
+  <div  *ngFor="let course of cat.courses " class="flex py-1 flex-col gap-1 hover:bg-gray-100 ">
+
+    <!-- courses -->
+    <a [routerLink]="['/course/subject/refresher',cat.id,course.id,]" class="text-sm font-sans hover:text-blue-600 hover:underline hover:font-medium px-2 py-1 " href="">{{course.subject}}</a>
+
+    <!-- videos -->
+    <!-- <div class="relative course hover:bg-gray-100  px-2 py-1 w-40">
+      <h1 class="text-sm font-sans hover:text-blue-600  hover:font-medium ml-10">Videos</h1>
+      <div class="course-absolute left-40 top-0 bg-white w-64  shadow-sm  ">
+
+       <div *ngFor="let video of cat.videos " class="flex flex-col gap-1 px-2 hover:bg-gray-100 my-2 py-1"
+       >
+<a class="text-sm font-sans hover:text-blue-600 hover:underline hover:font-medium px-6 " href="">{{video.subject}}</a>
+       </div>
+      </div>
+    </div>
+
+
+     books
+     <div class="relative course hover:bg-gray-100  px-2 py-1 w-40">
+      <h1 class="text-sm font-sans hover:text-blue-600  hover:font-medium ml-10">Books</h1>
+      <div class="course-absolute left-40 top-0 bg-white w-64  shadow-sm  ">
+
+       <div *ngFor="let book of cat.books " class="flex flex-col gap-1 px-2 hover:bg-gray-100 my-2 py-1"
+       >
+<a class="text-sm font-sans hover:text-blue-600 hover:underline hover:font-medium px-6 " href="">{{book.subject}}</a>
+       </div>
+      </div>
+    </div> -->
+
+  </div>
+ </div>
+  </div>
+
+</div>
+</div>
+
+</div>
+
+    <nav class="header-nav ms-auto">
+
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown relative">
+
+
+
+          <button   class="nav-link nav-icon"  data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-primary badge-number">4</span>
+          </button><!-- End Notification Icon -->
+
+          <ul class=" mt-8  lg:mr-6  ml-[200px] dropdown-menu  dropdown-menu-end dropdown-menu-arrow notifications "   >
+            <li class="dropdown-header">
+              You have 4 new notifications
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>Lorem Ipsum</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>30 min. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>Atque rerum nesciunt</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>1 hr. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Sit rerum fuga</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>2 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-info-circle text-primary"></i>
+              <div>
+                <h4>Dicta reprehenderit</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>4 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all notifications</a>
+            </li>
+
+          </ul><!-- End Notification Dropdown Items -->
+
+        </li><!-- End Notification Nav -->
+
+
+
+
+        <li class="nav-item dropdown">
+
+          <button  class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-chat-left-text"></i>
+            <span class="badge bg-success badge-number">3</span>
+          </button><!-- End Messages Icon -->
+
+          <ul class="mt-8  lg:mr-6  dropdown-menu dropdown-menu-end dropdown-menu-arrow messages" >
+            <li class="dropdown-header">
+              You have 3 new messages
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Maria Hudson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>4 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Anna Nelson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>6 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>David Muldon</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>8 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="dropdown-footer">
+              <a href="#">Show all messages</a>
+            </li>
+
+          </ul><!-- End Messages Dropdown Items -->
+
+        </li><!-- End Messages Nav -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <div   class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src={{user.profileImage}} alt="Profile" class="rounded-circle w-10 h-10 object-cover " *ngIf="user.profileImage!=undefined; else noPhoto">
+
+
+            <ng-template #noPhoto>
+            <div [style.background-color]="profileBackgroundColor" class="w-12 h-12 rounded-circle p-2 font-mono font-bold text-3xl pb-1">
+              {{user.firstName[0]}}{{user.lastName[0]}}
+            </div>
+            </ng-template>
+
+
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{user.firstName}}.{{user.lastName[0]}}</span>
+          </div><!-- End Profile Iamge Icon -->
+
+          <ul class="mt-8  lg:mr-48 pl-20  dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>{{user.firstName}} {{user.lastName}}</h6>
+              <span>{{user.job}}</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center"routerLink="/myprofile">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <button (click)="onLogouUser()" class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </button>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+  </div>
+
+
+
+  </header><!-- End Header -->
+

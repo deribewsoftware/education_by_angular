@@ -1,0 +1,49 @@
+<div class="flex flex-wrap justify-around lg:justify-between pt-10 bg-gray-900 h-screen overflow-y-auto ">
+
+
+  <div *ngIf="video.uploadFile!=null" class="lg:w-3/4   lg:p-10" >
+    <!-- Right Side: Video Player -->
+    <video controls height="300px" width="100%"  autoplay>
+      <source [src]="video.uploadFile" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+
+
+  <div class="lg:w-1/4  lg:pl-20" *ngIf="category.videos!=null">
+    <!-- Left Side: Related Video List -->
+    <h2 class="text-xl font-semibold mb-4 text-gray-100">Related Videos</h2>
+
+    <div class="mt-4" *ngFor="let subject of category.videos ">
+
+      <div *ngIf="subject.id!=video.id">
+        <app-card
+        [subject]="subject.title"
+        [cover]="subject.cover"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/video/player'"
+
+        [cardId]="subject.id"
+        [routeOne]="category.id"
+        [routeTwo]="subject.id"
+
+        [accountDirection]="'/account'"
+
+        ></app-card>
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+</div>

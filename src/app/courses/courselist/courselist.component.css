@@ -1,0 +1,82 @@
+@media (max-width: 1199px) {
+  .toggle-sidebar .sidebar {
+    left: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .toggle-sidebar #main,
+  .toggle-sidebar #footer {
+    margin-left: 0;
+  }
+
+  .toggle-sidebar .sidebar {
+    left: -300px;
+  }
+}
+
+.bg-primary-light {
+  background-color: #cfe2ff;
+  border-color: #cfe2ff;
+}
+.bg-secondary-light {
+  background-color: #e2e3e5;
+  border-color: #e2e3e5;
+}
+
+.bg-success-light {
+  background-color: #d1e7dd;
+  border-color: #d1e7dd;
+}
+
+.bg-danger-light {
+  background-color: #f8d7da;
+  border-color: #f8d7da;
+}
+
+.bg-warning-light {
+  background-color: #fff3cd;
+  border-color: #fff3cd;
+}
+
+.bg-info-light {
+  background-color: #cff4fc;
+  border-color: #cff4fc;
+}
+
+.bg-dark-light {
+  background-color: #d3d3d4;
+  border-color: #d3d3d4;
+}
+
+
+.activate{
+  color: #3b82f6;
+  font-weight: 500;
+  border-bottom-width: 2px;
+  border-color: #3b82f6;
+}
+
+
+
+/* banner */
+
+.image-banner-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.image-banner {
+  display: flex;
+  transition: transform 0.5s ease-out;
+}
+
+.image-banner img {
+  width: 100%;
+  height: auto;
+}
+
+.content-body{
+  background-color: rgb(240, 240, 240);
+}

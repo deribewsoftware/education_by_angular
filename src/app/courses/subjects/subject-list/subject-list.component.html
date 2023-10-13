@@ -1,0 +1,213 @@
+
+
+<app-header (ishidden)="onhidden($event)" [showSidebar]=ishidden></app-header>
+
+<app-side-nav [showSidebar]=ishidden></app-side-nav>
+
+
+<div [ngClass]="{'toggle-sidebar':ishidden}">
+
+
+
+
+
+
+
+
+<!-- main contents -->
+
+<main class="main flex flex-col" id="main">
+
+  <!-- banner -->
+
+  <div class=" h-[200px] bg-gray-700 w-full relative">
+    <img src={{course.cover}} alt="" class="object-cover h-full w-full opacity-30 ">
+
+    <div class="absolute top-16 lg:top-24 h-full w-full">
+      <div class="flex justify-center ">
+        <h1 class="text-3xl text-white font-bold poppins ">{{course.subject}}</h1>
+      </div>
+    </div>
+    </div>
+
+
+    <!-- tap buttons  -->
+
+    <div class="pl-16 mt-20 mb-6 flex gap-4 border-b-2 border-gray-200   w-full ">
+
+      <button (click)="onTab('Courses')" class="text-gray-500 p-2 hover:text-gray-600 " [ngClass]="{activate:categorySelected==='Courses'}">Courses</button>
+      <button (click)="onTab('Videos')"  class="text-gray-500 p-2 hover:text-gray-600 " [ngClass]="{activate:categorySelected==='Videos'}">Videos</button>
+      <button (click)="onTab('Books')"  class="text-gray-500 p-2 hover:text-gray-600 " [ngClass]="{activate:categorySelected==='Books'}">Books</button>
+      <button (click)="onTab('Exams')"  class="text-gray-500 p-2 hover:text-gray-600 " [ngClass]="{activate:categorySelected==='Exams'}">Exams</button>
+
+    </div>
+
+    <!-- courses -->
+<div class="flex flex-col gap-6">
+
+
+<!-- best or Popular Courses -->
+<div class="flex flex-col px-2 py-4">
+  <h1 class=" pl-4 text-xl font-semibold text-black font-sans mb-6 border-b-2 border-gray-400 w-full">
+    Popular {{course.subject}} Courses
+  </h1>
+
+  <div class="flex gap-4 overflow-clip lg:mx-10">
+  <div *ngFor="let subjects of popularCourse;let j=index" class="items ">
+
+
+    <app-card
+    [subject]="subjects.subject"
+    [cover]="subjects.cover"
+    [price]="subjects.price"
+    [lessons]="subjects.lessonsCount"
+    [likes]="subjects.likesCount"
+    [views]="subjects.viewsCount"
+    [account_name]="subjects.account.accountName"
+    [account_logo]="subjects.account.accountLogo"
+  [routerDirect]="'/course'"
+  [routeOne]="subjects.id"
+    [cardId]="subjects.id"
+
+    [accountDirection]="'/account'"
+    [accountId]="subjects.account.id"
+    [subscribers]="subjects.subscribersCount"
+
+    ></app-card>
+
+  </div>
+
+</div>
+</div>
+
+
+
+<!-- Upcaming courses -->
+<div class="flex flex-col px-2 py-4">
+  <h1 class=" pl-4 text-xl font-semibold text-black font-sans mb-6 border-b-2 border-gray-400 w-full">
+    New {{course.subject}} Courses
+  </h1>
+
+  <div class="flex gap-4 overflow-clip lg:mx-10">
+  <div *ngFor="let subjects of newCourses;let j=index" class="items ">
+
+
+    <app-card
+    [subject]="subjects.subject"
+    [cover]="subjects.cover"
+    [price]="subjects.price"
+    [lessons]="subjects.lessonsCount"
+    [likes]="subjects.likesCount"
+    [views]="subjects.viewsCount"
+    [account_name]="subjects.account.accountName"
+    [account_logo]="subjects.account.accountLogo"
+  [routerDirect]="'/course'"
+  [routeOne]="subjects.id"
+    [cardId]="subjects.id"
+
+    [accountDirection]="'/account'"
+    [accountId]="subjects.account.id"
+    [subscribers]="subjects.subscribersCount"
+
+    ></app-card>
+
+  </div>
+
+</div>
+</div>
+
+
+
+
+
+<!-- most Rated Courses -->
+<div class="flex flex-col px-2 py-4">
+  <h1 class=" pl-4 text-xl font-semibold text-black font-sans mb-6 border-b-2 border-gray-400 w-full">
+    Most Rated {{course.subject}} Courses
+  </h1>
+
+  <div class="flex gap-4 overflow-clip lg:mx-10">
+  <div *ngFor="let subjects of popularCourse;let j=index" class="items ">
+
+
+    <app-card
+    [subject]="subjects.subject"
+    [cover]="subjects.cover"
+    [price]="subjects.price"
+    [lessons]="subjects.lessonsCount"
+    [likes]="subjects.likesCount"
+    [views]="subjects.viewsCount"
+    [account_name]="subjects.account.accountName"
+    [account_logo]="subjects.account.accountLogo"
+  [routerDirect]="'/course'"
+  [routeOne]="subjects.id"
+    [cardId]="subjects.id"
+
+    [accountDirection]="'/account'"
+    [accountId]="subjects.account.id"
+    [subscribers]="subjects.subscribersCount"
+
+    ></app-card>
+
+  </div>
+
+</div>
+</div>
+
+<!-- all list Courses Button -->
+
+<div class="flex justify-center pt-20">
+<button *ngIf="!isShowtable; else noShownTable" (click)=" onShowTable()" class="mb-20 bg-blue-500 hover:bg-blue-600 text-lg font-sans font-medium text-white px-4 py-1 rounded-full shadow-xl">See All Courses</button>
+<ng-template #noShownTable>
+  <button (click)=" onShowTable()" class="bg-white shadow-lg px-4 py-1 text-center hover:bg-red-200 hover:text-red-600">
+<mat-icon class="text-2xl">close</mat-icon>
+  </button>
+</ng-template>
+</div>
+
+<!-- all list Courses -->
+<div *ngIf="isShowtable" class=" px-6 pb-20">
+
+ <div class="overflow-x-auto w-full">
+  <table class="bg-white shadow-md w-full lg:mx-4 px-2 " id="courses-table">
+    <thead>
+      <th>no:</th>
+      <th>Course:</th>
+      <th>Price:</th>
+      <th>Learners:</th>
+
+      <th>Posted In:</th>
+      <th>Academy</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let courses of popularCourse; let i=index" >
+        <td><p>{{i+1}}</p></td>
+        <td ><a class="hover:text-blue-600 hover:underline" [routerLink]="['/course',courses.id]">{{courses.subject}}</a></td>
+        <td ><a class="hover:text-blue-600 hover:underline" [routerLink]="['/course',courses.id]">{{courses.price}}</a></td>
+        <td ><a class="hover:text-blue-600 hover:underline" [routerLink]="['/course',courses.id]">{{courses.buyersCount}}</a></td>
+
+        <td ><a class="hover:text-blue-600 hover:underline" [routerLink]="['/course',courses.id]">{{onMoment(courses.createdAt)}}</a></td>
+        <td><a class="hover:text-blue-600 hover:underline" [routerLink]="['/account',courses.account.id]">{{courses.account.accountName}}</a></td>
+      </tr>
+    </tbody>
+   </table>
+ </div>
+
+</div>
+</div>
+
+
+    <!-- Videos -->
+
+
+    <!-- books -->
+
+
+
+
+
+
+
+</main>
+<div class=""><app-footer></app-footer></div>
+</div>

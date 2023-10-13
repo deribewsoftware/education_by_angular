@@ -1,0 +1,742 @@
+<app-header (ishidden)="onhidden($event)" [showSidebar]=ishidden></app-header>
+
+<app-side-nav [showSidebar]=ishidden></app-side-nav>
+
+
+<div [ngClass]="{'toggle-sidebar':ishidden}">
+
+<div class="main mt-10 pt-10" id="main">
+
+  <nav class=" flex flex-col p-6 mt-20">
+    <!-- Vidoes -->
+    <mat-tab-group dynamicHeight>
+      <mat-tab label="Videos">
+        <div class="example-small-box mat-elevation-z4">
+
+  <div >
+
+    <div class="flex overflow-x-auto Roboto border-b-2 items-center pt-8">
+      <a [routerLink]="['/library']" class=" bg-blue-400 m-2 p-1 text-xs text-black font-mono rounded-full shadow-md">All</a>
+      <div *ngFor="let category of videoCategory">
+      <a [routerLink]="['/video',category ]" class=" bg-gray-300 m-2 p-1 text-xs rounded-full shadow-md">{{category}}</a>
+    </div>
+
+      <!-- Add more items as needed -->
+
+  </div>
+
+
+
+
+
+
+    <div class="flex flex-col gap-4 mt-10 lg:mt-20 justify-around">
+
+      <div class="p-6 text-lg font-medium">
+        Software Engineering
+      </div>
+
+      <div class="flex flex-wrap justify-around items-center">
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+
+
+      </div>
+
+
+      <div class="p-6 text-lg font-medium">
+        Social Science
+      </div>
+
+
+    <div class="flex flex-wrap justify-around items-center">
+      <app-card
+      [subject]="'Java Progarmming Full Video'"
+      [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+      [price]="100"
+
+
+      [likes]="20"
+      [views]="30"
+      [account_name]="'Code Craft'"
+      [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+      [routerDirect]="'/course'"
+      [cardId]="3"
+      [accountId]="12"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+
+      <app-card
+      [subject]="'Java Progarmming Full Video'"
+      [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+      [price]="100"
+
+
+      [likes]="20"
+      [views]="30"
+      [account_name]="'Code Craft'"
+      [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+      [routerDirect]="'/course'"
+      [cardId]="3"
+      [accountId]="12"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+
+      <app-card
+      [subject]="'Java Progarmming Full Video'"
+      [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+      [price]="100"
+
+
+      [likes]="20"
+      [views]="30"
+      [account_name]="'Code Craft'"
+      [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+      [routerDirect]="'/course'"
+      [cardId]="3"
+      [accountId]="12"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+
+      <app-card
+      [subject]="'Java Progarmming Full Video'"
+      [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+      [price]="100"
+
+
+      [likes]="20"
+      [views]="30"
+      [account_name]="'Code Craft'"
+      [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+      [routerDirect]="'/course'"
+      [cardId]="3"
+      [accountId]="12"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+
+
+
+    </div>
+
+      <div class="p-6 text-lg font-medium">
+        Electrical Engineering
+      </div>
+      <div class="flex flex-wrap justify-around items-center">
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+
+
+      </div>
+
+      <div class="p-6 text-lg font-medium">
+        Health Science
+      </div>
+
+      <div class="flex flex-wrap justify-around items-center">
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+      </mat-tab>
+
+
+      <!-- Books -->
+      <mat-tab label="Books & Handouts">
+        <div class="example-large-box mat-elevation-z4">
+
+  <div >
+
+    <div class="flex overflow-x-auto Roboto border-b-2 items-center pt-8">
+
+      <a [routerLink]="['/library']" class=" bg-blue-400 m-2 p-1 text-xs text-black font-mono rounded-full shadow-md">All</a>
+      <div *ngFor="let category of bookCategory">
+        <a [routerLink]="['/book',category]" class=" bg-gray-300 m-2 p-1 text-xs rounded-full shadow-md">{{category}}</a>
+      </div>
+
+
+
+      <!-- Add more items as needed -->
+
+  </div>
+
+
+
+    <div class="flex flex-col gap-4 mt-10 lg:mt-20 justify-around">
+
+      <div class="p-6 text-lg font-medium">
+        Software Engineering
+      </div>
+
+      <div class="flex flex-wrap justify-around items-center">
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+
+
+      </div>
+
+
+      <div class="p-6 text-lg font-medium">
+        Social Science
+      </div>
+
+
+    <div class="flex flex-wrap justify-around items-center">
+      <app-card
+      [subject]="'Java Progarmming Full Video'"
+      [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+      [price]="100"
+
+
+      [likes]="20"
+      [views]="30"
+      [account_name]="'Code Craft'"
+      [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+      [routerDirect]="'/course'"
+      [cardId]="3"
+      [accountId]="12"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+
+      <app-card
+      [subject]="'Java Progarmming Full Video'"
+      [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+      [price]="100"
+
+
+      [likes]="20"
+      [views]="30"
+      [account_name]="'Code Craft'"
+      [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+      [routerDirect]="'/course'"
+      [cardId]="3"
+      [accountId]="12"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+
+      <app-card
+      [subject]="'Java Progarmming Full Video'"
+      [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+      [price]="100"
+
+
+      [likes]="20"
+      [views]="30"
+      [account_name]="'Code Craft'"
+      [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+      [routerDirect]="'/course'"
+      [cardId]="3"
+      [accountId]="12"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+
+      <app-card
+      [subject]="'Java Progarmming Full Video'"
+      [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+      [price]="100"
+
+
+      [likes]="20"
+      [views]="30"
+      [account_name]="'Code Craft'"
+      [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+      [routerDirect]="'/course'"
+      [cardId]="3"
+      [accountId]="12"
+      [accountDirection]="'/account'"
+
+      ></app-card>
+
+
+
+    </div>
+
+      <div class="p-6 text-lg font-medium">
+        Electrical Engineering
+      </div>
+      <div class="flex flex-wrap justify-around items-center">
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+
+
+      </div>
+
+      <div class="p-6 text-lg font-medium">
+        Health Science
+      </div>
+
+      <div class="flex flex-wrap justify-around items-center">
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+        <app-card
+        [subject]="'Java Progarmming Full Video'"
+        [cover]="'https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png'"
+        [price]="100"
+
+
+        [likes]="20"
+        [views]="30"
+        [account_name]="'Code Craft'"
+        [account_logo]="'https://media.licdn.com/dms/image/C4E03AQHUWfUNKtgxAw/profile-displayphoto-shrink_800_800/0/1580912624549?e=1698278400&v=beta&t=5W3Zjz8Ke88MR4bQeiCbmYTix924OyuhX_oCI7smEHE'"
+
+        [routerDirect]="'/course'"
+        [cardId]="3"
+        [accountId]="12"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+  </nav>
+
+
+
+
+</div>
+</div>

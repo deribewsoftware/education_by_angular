@@ -1,0 +1,226 @@
+ <!-- ======= Sidebar ======= -->
+ <div [ngClass]="{'toggle-sidebar':showSidebar} " class="mt-16 lg:mt-0">
+ <aside id="sidebar" class="sidebar  ">
+
+  <ul class="sidebar-nav  " id="sidebar-nav">
+
+
+    <li class="nav-item" >
+      <a class="nav-link " routerLink="/dashboard" routerLinkActive="active">
+        <i class="bi bi-collection"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+
+    <li class="nav-item pt-10" *ngIf="account!=null; else noAccount">
+      <a class="nav-link  " routerLink="/myaccount" routerLinkActive="active">
+        <span *ngIf="account_logo; else noLogo"><img class="rounded-circle w-8 h-8" src={{account_logo}} alt=""></span>
+        <ng-template #noLogo><div class="font-bold text-4xl bg-green-100 rounded-circle">{{account[0]}}</div></ng-template>
+        <span class="pl-2">{{account}}</span>
+      </a>
+    </li>
+    <!-- End Dashboard Nav -->
+    <ng-template #noAccount>
+      <li class="nav-item" >
+        <a class="nav-link " routerLink="/createaccount" routerLinkActive="active">
+          <i class="bi bi-grid"></i>
+          <span>Create Account</span>
+        </a>
+      </li>
+    </ng-template>
+
+
+
+
+    <li class="nav-item" >
+      <a class="nav-link " routerLink="/courses" routerLinkActive="active">
+        <i class="bi bi-collection"></i>
+        <span>Courses</span>
+      </a>
+    </li>
+
+
+
+
+    <li class="nav-item" >
+      <a class="nav-link " routerLink="/library" routerLinkActive="active">
+        <i class="bi bi-collection"></i>
+        <span>Library</span>
+      </a>
+    </li>
+
+
+    <li class="nav-item" >
+      <a class="nav-link " routerLink="/exams" routerLinkActive="active">
+        <i class="bi bi-collection"></i>
+        <span>Exams</span>
+      </a>
+    </li>
+
+
+    <li class="nav-item" >
+      <a class="nav-link " routerLink="/subscribtions" routerLinkActive="active">
+        <i class="bi bi-collection"></i>
+        <span>Q&N</span>
+      </a>
+    </li>
+
+    <li class="nav-item" >
+      <a class="nav-link " routerLink="/mytutorials" routerLinkActive="active">
+        <i class="bi bi-collection"></i>
+        <span>My Tutorials</span>
+      </a>
+    </li>
+
+    <li class="nav-item" >
+      <a class="nav-link " routerLink="/favourite" routerLinkActive="active">
+        <i class="bi bi-collection"></i>
+        <span>My Favourite Tutorials</span>
+      </a>
+    </li>
+
+
+    <li class="nav-item" >
+      <a class="nav-link " routerLink="/subscribtions" routerLinkActive="active">
+        <i class="bi bi-collection"></i>
+        <span>Subscribtion Channels</span>
+      </a>
+    </li>
+
+
+
+
+
+    <li class="nav-heading">Pages</li>
+
+    <li class="nav-item">
+      <a class="nav-link "  routerLink="/myprofile" routerLinkActive="active">
+        <i class="bi bi-person"></i>
+        <span>Profile</span>
+      </a>
+    </li><!-- End Profile Page Nav -->
+
+    <li class="nav-item" *ngIf="savingAccount; else noSavingAccount">
+      <a class="nav-link "  routerLink="/savingaccount" routerLinkActive="active">
+        <i class="bi bi-envelope"></i>
+        <span>Saving Account</span>
+      </a>
+    </li><!-- End Contact Page Nav -->
+
+
+    <ng-template #noSavingAccount>
+
+      <li class="nav-item" >
+        <form action="" (ngSubmit)="onCreatesavingAccount()">
+        <a type="submit" class="nav-link " routerLink="/createsavingaccount">
+          <i class="bi bi-envelope"></i>
+          <span>Create Saving Account</span>
+        </a>
+      </form>
+      </li><!-- End Contact Page Nav -->
+    </ng-template>
+
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="pages-faq.html">
+        <i class="bi bi-question-circle"></i>
+        <span>F.A.Q</span>
+      </a>
+    </li><!-- End F.A.Q Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="pages-contact.html">
+        <i class="bi bi-envelope"></i>
+        <span>{{savingAccount}}</span>
+      </a>
+    </li><!-- End Contact Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/signup" routerLinkActive="active">
+        <i class="bi bi-card-list"></i>
+        <span>Register</span>
+      </a>
+    </li><!-- End Register Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link " routerLink="/login" routerLinkActive="active">
+        <i class="bi bi-box-arrow-in-right"></i>
+        <span>Login</span>
+      </a>
+    </li><!-- End Login Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="pages-error-404.html">
+        <i class="bi bi-dash-circle"></i>
+        <span>Error 404</span>
+      </a>
+    </li><!-- End Error 404 Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="pages-blank.html">
+        <i class="bi bi-file-earmark"></i>
+        <span>Blank</span>
+      </a>
+    </li><!-- End Blank Page Nav -->
+
+  </ul>
+
+</aside><!-- End Sidebar-->
+
+</div>
+
+
+<!-- modals -->
+
+
+<div class="mod z-50" id="modal">
+  <div class="mod-overlay" id="modal-overlay">
+
+  </div>
+
+  <div class="mod-content absolute  lg:w-1/3 top-1/3 shadow lg:left-1/3  bg-white flex rounded-lg p-4 ml-2 mr-2 z-50" id="modal-content">
+
+      <div class="mod-header ">
+
+          <div class="mod-title">Update Account</div>
+
+      </div>
+
+<form action="post">
+
+  <div class="mod-body">
+
+
+
+<div class="form-group pt-5">
+  <label for="account_name">Account Name</label>
+  <input type="text" id="account_name"  class=" form-control "  placeholder=" enter your account name">
+</div>
+<div class="form-group pt-5">
+  <label for="account_logo">Account Logo</label>
+  <input type="file" id="account_logo"  class="form-control "  placeholder=" enter your account name">
+</div>
+
+
+
+
+  </div>
+
+
+
+
+
+  <div class="mod-footer pt-10">
+
+      <div (click)="closemodal()" class="  px-2 bg-red-500  text-md rounded-lg  hover:bg-red-600 text-white">Close</div>
+      <button class="px-2 bg-green-500  text-md rounded-lg ml-2 hover:bg-green-600 text-white">Save </button>
+  </div>
+</form>
+
+
+  </div>
+
+
+
+</div>
+

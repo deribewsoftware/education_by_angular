@@ -1,0 +1,113 @@
+<div class="toggle-sidebar"  [ngClass]="{'toggle-sidebar':ishidden}">
+  <app-header (ishidden)="onhidden($event)"></app-header>
+
+   <app-side-nav [showSidebar]=ishidden></app-side-nav>
+
+<main id="main" class="main flex flex-col   lg:mr-[350px] overflow-y-auto overflow-clip ">
+
+
+<div class="flex flex-col p-2 bg-blue-50  border-b-2 border-blue-100  mt-10">
+  <div class=" flex flex-wrap   justify-around p-10">
+    <div class="text-gray-500 text-clip font-mono font-semibold">  {{course.subject}}</div>
+    <div class="text-gray-500 text-clip font-mono font-semibold">{{course.lessonsCount}} lessons</div>
+    <!-- <div class="text-gray-500 text-clip font-mono font-semibold">{{course.grade}}</div> -->
+  </div>
+  <div class=" flex flex-wrap   justify-around">
+    <div class="text-gray-500 font-thin  text-xs font-mono">{{course.likesCount}} likes</div>
+    <div class="text-gray-500 font-thin  text-xs font-mono">{{course.likesCount}} views</div>
+    <div class="bg-green-300 font-mono font-semibold rounded-full items-center p-0 px-2">{{course.price}}ETB</div>
+  </div>
+</div>
+
+
+
+<!-- courses content -->
+<div class="course-content flex flex-col  bg-gray-50 h-screen p-2">
+
+  <div class="font-semibold border-b-2 border-gray-200 p-4 pb-0">
+    About Course
+  </div>
+  <div class="p-4 text-justify text-ellipsis">
+    About Course drubsbsabjkkkkk
+    About Course drubsbsabjkkkkk
+    About Course drubsbsabjkkkkk
+    About Course drubsbsabjkkkkk
+    About Course drubsbsabjkkkkk
+    About Course drubsbsabjkkkkkvv
+    About Course drubsbsabjkkkkkv
+    About Course drubsbsabjkkkkkv
+    About Course drubsbsabjkkkkkvvv
+    About Course drubsbsabjkkkkk
+    About Course drubsbsabjkkkkk
+    About Course drubsbsabjkkkkk
+    About Course drubsbsabjkkkkk
+    About Course drubsbsabjkkkkk
+    About Course drubsbsabjkkkkk
+    About Course drubsbsabjkkkkk
+    About Course drubsbsabjkkkkkvk
+    kkkkkkkkkkkkkkkkkkkkkwhkkkkkkk
+    kkkkkkkkkkkkkkkkkkk2vvw
+  </div>
+
+</div>
+
+
+<!-- Chapters Lists -->
+<div class="lg:fixed flex flex-col align-middle lg:right-0  bg-slate-100 lg:h-screen lg:w-[350px] lg:top-14 lg:p-4 justify-center">
+  <div class="font-semibold border-b-2 border-gray-200 p-4 pb-0">
+    Chapters:
+  </div>
+  <div  class="lists py-2 px-2 " *ngFor="let chapter of course.chapter">
+
+    <div *ngIf="chapterId!=chapter.id" (click)=" onexpandedChapter(chapter.id,isBought)" class="course hover:bg-gray-50 flex justify-between  shadow-smitems-center  bg-white w-full h-12"  [ngClass]="{'border-left':chapterId!=chapter.id ,'border-top-left':chapterId==chapter.id}" >
+ <div  class="bg-teal-400  h-12  items-center pt-2 font-mono font-semibold px-2 text-white" [ngClass]="{'border-left':chapterId!=chapter.id ,'border-top-left':chapterId==chapter.id}">{{chapter.chapter}} </div>
+
+ <div class="">{{chapter.title}}</div>
+
+ <div class="flex justify-around p-2">
+
+
+  <i *ngIf="isBought" class="fa-solid fa-angle-down text-gray-300 text-sm"></i>
+  <i *ngIf="!isBought" class="fa-solid fa-lock text-gray-300 text-sm"></i>
+ </div>
+    </div>
+
+
+
+    <div *ngIf="chapterId==chapter.id" class="flex flex-col  ">
+       <!-- content expanded -->
+    <div  class="course hover:bg-gray-50 flex justify-between  shadow-smitems-center  bg-white w-full pb-6 rounded-lg"  [ngClass]="{'border-left':chapterId!=chapter.id ,'border-top-left':chapterId==chapter.id}" >
+      <div class="bg-teal-400  h-12  items-center pt-2 font-mono font-semibold px-2 text-white" [ngClass]="{'border-left':chapterId!=chapter.id ,'border-top-left':chapterId==chapter.id}">{{chapter.chapter}} </div>
+
+      <div class="">{{chapter.title}}</div>
+
+
+
+     <button class="px-2 mb-4 hover:bg-red-100 text-gray-300 hover:text-red-600" *ngIf="chapterId==chapter.id" (click)=" onexpandedChapter(null,isBought)"><i class="   fa-solid fa-xmark"></i></button>
+
+
+         </div>
+
+      <div *ngFor="let lesson of chapter.lessons; let i=index" class="flex flex-col bg-white pl-2 pt-2 border-b-2">
+
+
+
+
+        <h1 class="text-sm font-sans">Lesson {{i+1}}:{{lesson.title}}</h1>
+        <div class="flex gap-3 p-2 text-xs">
+
+          <a [routerLink]="['/course/chapter',this.course.id,this.chapter.id,this.lesson.id]" class="hover:text-blue-600 hover:underline hover:bg-blue-50 px-2 py-1 hover:font-medium"> <span><i class="fa-solid fa-book-open-reader pr-1"></i></span>text</a>
+
+          <p class="hover:text-blue-600 hover:underline hover:bg-blue-50 px-2 py-1 hover:font-medium"> <span><i class="fa-solid fa-circle-play pr-1"></i></span>video</p>
+          <p class="hover:text-blue-600 hover:underline hover:bg-blue-50 px-2 py-1 hover:font-medium"><span><i class="fa-solid fa-book pr-1"></i></span>book</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+   </div>
+
+
+</main>
+</div>

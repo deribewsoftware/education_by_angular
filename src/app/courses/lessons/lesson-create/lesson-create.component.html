@@ -1,0 +1,111 @@
+
+<div class="flex justify-center flex-wrap  ">
+
+  <div class="w-full lg:w-3/5 lg:overflow-y-auto lg:h-screen bg-white border-r-2 flex flex-col p-2   lg:p-20 shadow-md ">
+    <div class="flex justify-end pt-10  border-b-2">
+      <p class=" p-2 text-xl font-mono text-gray-400">1/2</p>
+    </div>
+
+
+
+
+<!-- Chips section -->
+<div class="flex flex-wrap justify-center mt-6 p-2 lg:p-6">
+  <div *ngIf="chipsData!=[]" class="flex gap-3 flex-wrap">
+
+
+
+    <div *ngFor="let chips of chipsData">
+
+      <button class="inline-flex items-center  rounded-full py-1 px-2 " [ngClass]="chipsStore.includes(chips)||chipsStore.includes(chips)||chipsStore.includes(chips)? 'bg-blue-600 hover:to-blue-700 text-white':'bg-gray-300'" [@fadeInOut]="true"(click)="onchipsSelected(chips)">
+        <span *ngIf="chipsStore.includes(chips)" class="mr-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </span>
+        <span >{{chips}}</span>
+      </button>
+
+
+    </div>
+
+   </div>
+</div>
+
+
+    <form class="pb-10" [formGroup]="LessonForm" (ngSubmit)="onCreateLesson()" >
+
+
+      <!-- Title -->
+      <div   class="form-group flex flex-col p-2 lg:mx-6  mt-4">
+
+  <input type="text" id="title"  class="form-control outline-none border-none p-1 lg:p-2 text-2xl font-sans font-medium border-b-2"formControlName="title" placeholder="  enter title ...">
+  <hr>
+      </div>
+
+      <!-- Indroduction: -->
+      <div   class="form-group flex flex-col p-2 pb-6 lg:mx-6 mb-2">
+
+<textarea   class="form-control outline-none bg-sky-50 p-4 rounded-lg text-left justify-start font-serif text-black border-none" formControlName="content"  id="content" cols="30" id="content" rows="4"  placeholder="enter indroduction...">enter indroduction...</textarea>
+
+            </div>
+
+
+
+
+
+
+                  <!-- brain strom quetions questions: -->
+
+                  <div *ngIf="chipsStore.includes('questions')"  class="flex flex-col border-l-4 border-orange-600 bg-orange-50 lg:mx-8 mb-4 ">
+<label class="p-2  font-medium text-orange-600 " for="question">Brainstrom Questions</label>
+<ul class="p-2 font-serif text-black text-sm ">
+  <li> <textarea class="form-control outline-none border-none font-sans bg-orange-50" formControlName="questions" name="" id="question" cols="30" rows="5">list of questons....</textarea> </li>
+</ul>
+</div>
+
+
+
+                   <!-- videos -->
+                        <div *ngIf="chipsStore.includes('video')"  class="form-group flex flex-col p-2 pb-6 lg:mx-6">
+                          <label class="text-sm font-sans py-1" for="video">Video:</label>
+                          <input (change)=" onVideoSeleced($event)" type="file" id="video" class="form-control outline-none" placeholder="  enter title ...">
+                              </div>
+
+
+
+                              <!-- Book -->
+                              <div *ngIf="chipsStore.includes('book')"  class="form-group flex flex-col p-2 pb-6 lg:mx-6">
+                                <label class="text-sm font-sans py-1" for="image">Book:</label>
+                                <input type="file" (change)=" onImageSeleced($event)" id="image" class="form-control outline-none" placeholder="  enter title ...">
+                                    </div>
+
+
+                                     <!-- summary: -->
+
+            <div *ngIf="chipsStore.includes('conclusion')"  class="form-group flex flex-col p-2 lg:mx-6 mb-6">
+              <label  for="summary" class="text-black  font-medium py-1 lg:pl-4">Conclusion</label>
+              <textarea  class="form-control outline-none font-serif text-sm lg:pl-4 border-none " formControlName="summary"  id="summary" cols="30" id="summary" rows="3" >options..</textarea>
+
+                  </div>
+
+                                    <!-- Submit Button -->
+                                    <div class="p-2 flex pb-10 justify-end mt-10 ">
+                                      <button type="submit" (click)="onCreateLoading()" class=" rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-md font-medium font-sans px-4  py-1 lg:ml-20  ">Next</button>
+                                          </div>
+    </form>
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+<app-loading [loading]="isloading"></app-loading>
+
+</div>

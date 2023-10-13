@@ -1,0 +1,55 @@
+<div>
+
+  <main id="main" class="main">
+
+    <div class="bg-gray-100 shadow-md p-4 h-screen overflow-y-auto">
+
+<div class="exam-header flex justify-between border-b-2 p-2  border-gray-300">
+  <div>{{examSubject}}</div>
+  <div>{{examRoute}}</div>
+<div>time</div>
+</div>
+
+
+<div *ngFor="let exam of exams; let i=index ">
+
+<app-questions-card [Q_no]="i+1"
+[question]="exam.question"
+[explanation]="exam.explanation"
+[choose]="exam.choose"
+[hideExplanation]="HideExplanation"
+></app-questions-card>
+</div>
+
+<button (click)="onsubmit()" type="submit" class="btn w-full px-4 py-2 mb-4 btn-primary mt-20 bg-blue-500 " data-bs-toggle="modal" data-bs-target="#modal">Submit</button>
+    </div>
+
+
+
+
+
+
+
+  <div class="modal fade" id="modal">
+    <div class="modal-dialog">
+      <div class="modal-content" >
+       <div class="modal-header">
+        <h1>Your Exam Result is:-</h1>
+        <button class="btn-close" data-bs-dismiss="modal" data-bs-target="#modal"></button>
+       </div>
+
+       <div class="modal-body flex justify-around ">
+        <div class="rounded-circle w-[100px] h-[100px] border-2  pt-10 pl-6 border-gray-400 items-center"> 20/100</div>
+       </div>
+       <div class="modal-footer">
+        <button class="btn btn-danger " data-bs-dismiss="modal" data-bs-target="#modal">Close</button>
+        <button class="btn btn-success " data-bs-dismiss="modal" data-bs-target="#modal">Ok</button>
+       </div>
+      </div>
+
+    </div>
+
+  </div>
+  </main>
+
+</div>

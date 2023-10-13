@@ -1,0 +1,188 @@
+<div class="flex flex-wrap justify-center  align-middle bg-gray-100  ">
+
+
+
+
+  <div class="bg-white flex flex-col w-full lg:w-2/5 justify-center align-middle  lg:rounded-r-lg shadow-xl overflow-y-clip">
+
+
+
+
+    <!-- Title -->
+     <div class="flex justify-between pt-10 ">
+
+      <button *ngIf="indexFormData>0" class="text-lg text-gray-500 hover:text-gray-600 font-medium font-sans py-3 px-6" (click)="onBackForm()">back</button>
+      <button *ngIf="indexFormData<6 && formDataValues[indexFormData]=='photo'" (click)="onFormContinue()" class="text-lg text-gray-500 hover:text-gray-600 font-medium font-sans py-3 px-6">skip</button>
+     </div>
+
+     <div class="flex justify-end my-6 border-b-2">
+      <p class="px-4 text-lg font-mono text-gray-400 text-center">{{indexFormData+1}}/6</p>
+     </div>
+
+
+
+     <form method="post" class="" [formGroup]='registerationForm' (ngSubmit)="procedRegistration()" class="flex justify-center h-screen relative">
+
+
+
+<!-- Image form -->
+
+<div class=" absolute flex flex-col   align-middle text-center   p-4   " [ngClass]="formDataValues[indexFormData]=='photo'? 'show-form':'hide-form'">
+
+  <div class="flex justify-center my-10 ">
+<img src="https://thenounproject.com/api/private/icons/2532839/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0" alt=""
+ class="h-40 w-40">
+  </div>
+
+<div class="bg-gray-100 hover:gray-200 items-center  mb-10 width-[300px] lg-full my-10 border-b-2 border-gray-400">
+  <label class="lg:pr-16 text-gray-700 font-semibold text-xs" for="photo">Upload photo</label>
+  <input type="file" id="photo" (change)="onProfilePhotoSelect($event)">
+</div>
+
+<div class="flex justify-end py-20 px-4">
+  <button (click)="onFormContinue()" class="bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md font-sans px-2 py-1">Continue</button>
+</div>
+</div>
+
+
+
+
+
+<!-- full name -->
+<div class="absolute " [ngClass]="formDataValues[indexFormData]=='name'? 'show-form':'hide-form'">
+
+  <div class="h-48 py-6">
+    <img src="../../../assets/my name.png" alt="myname" class="h-48">
+  </div>
+  <h1 class="text-lg font-bold font-sans py-6 mb-6">Write Your Full Name</h1>
+      <!-- First Name -->
+      <mat-form-field class="w-full p-0">
+
+      <mat-label  for="fname" class="text-gray-400 font-semibold text-sm example-full-width">First Name</mat-label>
+      <input id="fname" matInput formControlName="FirstName" type="text" placeholder="your first name...">
+
+    </mat-form-field>
+
+<!-- Last Name -->
+     <mat-form-field class="w-full p-0">
+      <mat-label for="lname" class="text-gray-500 font-semibold text-sm">Last Name</mat-label>
+      <input id="lname"  matInput formControlName="LastName" class=" bg-gray-100 text-clip p-2 rounded-2xl focus:bg-white focus:border-gray-400 focus:shadow-md w-full" type="text" placeholder="your father name...">
+     </mat-form-field >
+
+
+
+     <div class="flex justify-end py-20 px-4">
+      <button (click)="onFormContinue()" class="bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md font-sans px-2 py-1">Continue</button>
+    </div>
+
+    </div>
+
+
+
+
+    <div class="absolute" [ngClass]="formDataValues[indexFormData]=='job'? 'show-form':'hide-form'">
+      <div class="h-48 py-6">
+        <img src="../../../assets/job.png" alt="myname" class="h-48">
+      </div>
+      <h1 class="text-lg font-bold font-sans py-6 mb-6">Select Your Job</h1>
+  <!-- job -->
+
+  <mat-form-field class="w-full p-0">
+      <mat-label for="job" class="text-gray-500 font-semibold text-sm">Job</mat-label>
+      <input id="job" matInput formControlName="Job" class=" bg-gray-100 text-clip p-2 rounded-2xl focus:bg-white focus:border-gray-400 focus:shadow-md w-full" type="text" placeholder="your job...">
+    </mat-form-field >
+
+    <div class="flex justify-end py-20 px-4">
+      <button (click)="onFormContinue()" class="bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md font-sans px-2 py-1">Continue</button>
+    </div>
+  </div>
+
+
+
+
+  <div class="absolute top-4" [ngClass]="formDataValues[indexFormData]=='department'? 'show-form':'hide-form'">
+
+
+
+
+     <!-- dept Level -->
+
+     <div class="h-48 py-6">
+      <img src="../../../assets/department2.png" alt="myname" class="h-48">
+    </div>
+     <h1 class="text-lg font-bold font-sans py-6 mb-6">Select Your Field/Department</h1>
+
+    <mat-form-field class="w-full p-0">
+      <mat-label>department</mat-label>
+      <mat-select  formControlName="department">
+        <mat-option *ngFor="let departmen of departments" [value]="departmen">
+          {{departmen}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="flex justify-end py-20 px-4">
+      <button (click)="onFormContinue()" class="bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md font-sans px-2 py-1">Continue</button>
+    </div>
+  </div>
+
+
+
+
+<!-- Phone Number -->
+  <div class="absolute" [ngClass]="formDataValues[indexFormData]=='phone'? 'show-form':'hide-form'">
+     <div class="flex py-6 h-32 w-full justify-center ">
+      <img src="../../../assets/phone.png" alt="phone" class="h-32 w-32 object-contain">
+     </div>
+
+     <h1 class="text-lg font-bold font-sans py-6 mb-6">Write Your Phone Number</h1>
+     <mat-form-field class="w-full p-0">
+      <mat-label for="level" class="text-gray-500 font-semibold text-sm">Phone Number</mat-label>
+      <input id="level" matInput formControlName="PhoneNumber" class=" bg-gray-100 text-clip p-2 rounded-2xl focus:bg-white focus:border-gray-400 focus:shadow-md w-full" type="text" placeholder="your eduaction level...">
+      <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field >
+
+    <div class="flex justify-end py-20 sm:px-4 w-full">
+      <button (click)="onFormContinue()" class="bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md font-sans px-2 py-1">Continue</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- Password -->
+  <div class="absolute" [ngClass]="formDataValues[indexFormData]=='password'? 'show-form':'hide-form'">
+
+    <div class="flex py-6 h-32 w-full justify-center ">
+      <img src="../../../assets/password3.jpg" alt="phone" class="h-32 w-32 object-contain">
+     </div>
+
+     <h1 class="text-lg font-bold font-sans py-6 mb-6">Write Your Password</h1>
+    <mat-form-field class="w-full p-0">
+      <mat-label for="level" class="text-gray-500 font-semibold text-sm">Password</mat-label>
+      <input id="level" matInput formControlName="Password" class=" bg-gray-100 text-clip p-2 rounded-2xl focus:bg-white focus:border-gray-400 focus:shadow-md w-full" type="password" placeholder="your eduaction level...">
+    </mat-form-field >
+
+
+    <mat-form-field class="w-full p-0">
+      <mat-label>Confirm your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+
+     <div class="flex justify-center mt-10">
+      <button  class="btn bg-blue-500   font-semibold font-mono text-lg text-white hover:bg-blue-600"><i class="bi bi-person"></i> Submit</button>
+     </div>
+     <p class="p-2 text-sm font-light flex justify-center">already have an account? <a routerLink="/login" class="text-blue-500 text-base text-md">Login</a></p>
+
+
+
+    </div>
+
+
+     </form>
+      </div>
+
+</div>

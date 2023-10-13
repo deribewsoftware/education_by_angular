@@ -1,0 +1,68 @@
+
+
+  <!-- card lists -->
+
+
+<!-- Courses -->
+    <div *ngIf="categorySelected===categoryType">
+
+
+
+      <div *ngFor="let course of categories;let i=index" class="p-6 mb-10">
+
+        <div class="flex justify-between mb-10 border-b-2"><div class="text-lg font-sans font-medium text-black ">{{course.subject}}</div>
+        <p class="  bg-blue-100  px-2 font-mono hover:font-medium text-blue-600 hover:bg-blue-200">See All</p>
+      </div>
+
+
+      <div class="w-full flex  justify-around gap-2 relative overflow-clip container" *ngIf="course.course!=[]; else NoCourses">
+      <div class="w-full flex  justify-around gap-2 relative overflow-clip main-items">
+        <div *ngFor="let subjects of course.course;let j=index" class="items">
+
+
+          <app-card
+          [subject]="subjects.subject"
+          [cover]="subjects.cover"
+          [price]="subjects.price"
+          [lessons]="subjects.lessonsCount"
+          [likes]="subjects.likesCount"
+          [views]="subjects.viewsCount"
+          [account_name]="subjects.account.accountName"
+          [account_logo]="subjects.account.accountLogo"
+        [routerDirect]="'/course'"
+        [routeOne]="subjects.id"
+          [cardId]="subjects.id"
+
+          [accountDirection]="'/account'"
+          [accountId]="subjects.account.id"
+          [subscribers]="subjects.subscribersCount"
+
+          ></app-card>
+
+        </div>
+      </div>
+
+
+<div class="absolute w-full h-full">
+  <div class="flex justify-between px-4 align-middle pt-32">
+
+
+    <button class="h-12 w-12 bg-gray-200 transition-all duration-100 opacity-95 ease-out  rounded-full shadow-xl hover:bg-gray-300 "><i class="bi bi-chevron-left text-5xl font-bold text-black"></i></button>
+    <button class="h-12 w-12 bg-gray-200 transition-all duration-100 opacity-95 ease-out  rounded-full shadow-xl hover:bg-gray-300  next" appNextDirect><i class="bi bi-chevron-right text-5xl font-bold"></i></button>
+
+
+
+  </div>
+</div>
+    </div>
+
+<ng-template #NoCourses>
+  <div class="flex justify-center p-10 text-2xl font-medium text-red-900">
+No Courses Found!
+  </div>
+</ng-template>
+
+
+    </div>
+
+

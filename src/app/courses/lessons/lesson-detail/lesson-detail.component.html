@@ -1,0 +1,168 @@
+
+<div class="flex justify-center flex-wrap gap-4  ">
+
+
+  <!-- headers -->
+
+  <div class="flex flex-wrap justify-between px-6 lg:h-12 w-full fixed top-0 shadow-md bg-white align-middle text-center py-2">
+  <div class="flex justify-start ">
+    <a [routerLink]="['/course',course.id]" class="back-arrow"><i class="fa fa-solid text-xl p-1 pr-6 fa-arrow-left"></i></a>
+    <div class="h-9 w-9 rounded-full  font-medium ml-6  ">
+      <img src={{course.account.accountLogo}} height="100%" width="100%" class="rounded-full object-cover h-9 w-9 mb-6 " alt="image">
+    </div>
+    <div class=" pt-2 font-sans font-bold text-sm ">{{course.account.accountName}}</div>
+  </div>
+    <div class="text-xl font-sans font-medium ">{{course.subject}}</div>
+    <div class="h-9 w-9 rounded-full border-4 border-green-500 text-center py-1 font-medium text-black font-mono bg-gray-100 text-sm ">20%</div>
+
+  </div>
+
+  <div class="w-full lg:w-7/12 lg:overflow-y-auto lg:h-screen bg-white border-r-2 flex flex-col lg:py-10 lg:px-20 mt-12 shadow-md">
+     <div class="p-1 lg:p-4  pb-6 mb-10  flex justify-between">
+
+    <h1 class="text-lg text-gray-400 font-mono font-medium p-2">Chapter:{{lesson.chapter.chapter}}</h1>
+    <h1 class="text-lg text-gray-400 font-mono font-medium p-2">{{lesson.chapter.title}}</h1>
+
+     </div>
+    <div class="p-1 lg:p-2 text-2xl font-sans font-medium border-b-2">
+      {{lesson.title}}
+    </div>
+    <!-- Indroduction -->
+  <div class="bg-sky-50 p-4 rounded-lg text-left justify-start lg:m-4 mt-6 font-serif text-black">
+ {{lesson.body}}
+  </div>
+
+
+
+
+
+
+
+
+<!-- content -->
+  <div class="flex flex-col lg:p-2 lg:pl-5">
+
+    <div *ngFor="let content of lesson.content">
+      <h1 *ngIf="content.sub_title!=''" class="text-black  font-medium">{{content.sub_title}}</h1>
+
+      <div *ngIf="content.content!=''" class="flex font-serif py-1"><span><i class="pr-2 fa-regular fa-hand-point-right"></i></span>
+        <p>{{content.content}}</p>
+       </div>
+
+        <!-- links url -->
+     <div *ngIf="content.link_url!=''" class="p-3 ">
+      <a class="text-mono text-sm text-blue-500 hover:underline py-2 hover:text-blue-600"> {{content.link_url}}</a>
+           </div>
+
+       <div *ngIf="content.photo!='undefined'" class="flex justify-center mt-4 mb-4 ">
+        <img src={{content.photo}} height="100%" width="100%" class="object-contain" alt="">
+
+       </div>
+   <!-- remarks -->
+       <div *ngIf="content.remark!=''" class="flex flex-col border-l-4 border-green-600 bg-green-50 mt-4 mb-4 ">
+        <h1 class="p-2 text-black font-medium text-lg ">remark</h1>
+        <p class="p-2 font-serif text-black text-sm ">
+          {{content.remark}}
+        </p>
+       </div>
+
+    </div>
+  </div>
+  <!-- end of content -->
+
+
+
+
+
+
+ <!-- questions -->
+  <!-- brain storm questions -->
+<div *ngIf="lesson.questions!=''" class=" questions flex flex-col border-l-4 border-orange-600 bg-orange-50 mt-4 mx-2 lg:ml-3 mb-4 relative ">
+  <h1 class="p-2  font-medium text-orange-600 ">Brainstrom Questions</h1>
+  <ul class="p-2 font-serif text-black text-sm ">
+    <li class="py-1 flex" *ngFor="let question of lesson.questions.split('?'); let i=index"><p class="pb-1 pr-1">{{i+1}}.</p><p>{{question}}?</p> </li>
+  </ul>
+  </div>
+
+
+  <!-- summary -->
+  <div *ngIf="lesson.summary!=''" class="flex flex-col p-1 justify-center mt-6 lg:p-4 lg:pl-4  ">
+    <h1 class="text-black  font-medium py-1 lg:pl-4">Conclusion</h1>
+<p class="font-serif text-sm lg:pl-4">
+{{lesson.summary}}
+</p>
+  </div>
+<div class="py-64"></div>
+
+
+  </div>
+
+
+
+  <!-- CHAPTERS -->
+
+  <div class="flex flex-col justify-center  lg:h-screen overflow-y-auto w-full lg:w-3/12 gap-4  bg-sky-300 shadow-md  ">
+
+
+<!-- Chapters Lists -->
+
+  <div class="font-semibold border-b-2 border-gray-200 p-4 pb-0">
+    Chapters:
+  </div>
+  <div  class="lists  mx-4 " *ngFor="let chapter of course.chapter">
+
+    <div *ngIf="chapterId!=chapter.id" (click)=" onexpandedChapter(chapter.id,isBought)" class="course hover:bg-gray-50 flex justify-between   shadow-sm items-center  bg-white w-full h-12"  [ngClass]="{'border-left':chapterId!=chapter.id ,'border-top-left':chapterId==chapter.id}" >
+ <div  class="bg-teal-400  h-12  items-center pt-2 font-mono font-semibold px-2 text-white" [ngClass]="{'border-left':chapterId!=chapter.id ,'border-top-left':chapterId==chapter.id}">{{chapter.chapter}} </div>
+
+ <div class="">{{chapter.title}}</div>
+
+ <div class="flex justify-around p-2">
+
+
+  <i *ngIf="isBought" class="fa-solid fa-angle-down text-gray-300 text-sm"></i>
+  <i *ngIf="!isBought" class="fa-solid fa-lock text-gray-300 text-sm"></i>
+ </div>
+    </div>
+
+
+
+    <div *ngIf="chapterId==chapter.id" class="flex flex-col  ">
+       <!-- content expanded -->
+    <div  class="course hover:bg-gray-50 flex justify-between  shadow-smitems-center  bg-white w-full pb-6 rounded-lg"  [ngClass]="{'border-left':chapterId!=chapter.id ,'border-top-left':chapterId==chapter.id}" >
+      <div class="bg-teal-400  h-12  items-center pt-2 font-mono font-semibold px-2 text-white" [ngClass]="{'border-left':chapterId!=chapter.id ,'border-top-left':chapterId==chapter.id}">{{chapter.chapter}} </div>
+
+      <div class="">{{chapter.title}}</div>
+
+
+
+     <button class="px-2 mb-4 hover:bg-red-100 text-gray-300 hover:text-red-600" *ngIf="chapterId==chapter.id" (click)=" onexpandedChapter(null,isBought)"><i class="   fa-solid fa-xmark"></i></button>
+
+
+         </div>
+
+      <div *ngFor="let lesson of chapter.lessons; let i=index" class="flex flex-col bg-white pl-2 pt-2 border-b-2">
+
+
+
+
+        <h1 class="text-sm font-sans">Lesson {{i+1}}:{{lesson.title}}</h1>
+        <div class="flex gap-3 p-2 text-xs">
+
+          <a  [routerLink]="['/lesson/refresh',this.course.id,this.chapter.id,this.lesson.id]" class="hover:text-blue-600 hover:underline hover:bg-blue-50 px-2 py-1 hover:font-medium"> <span><i class="fa-solid fa-book-open-reader pr-1"></i></span>text</a>
+
+          <a [routerLink]="['/course/chapter/lesson/video',this.course.id,this.chapter.id,this.lesson.id]" class="hover:text-blue-600 hover:underline hover:bg-blue-50 px-2 py-1 hover:font-medium"> <span><i class="fa-solid fa-circle-play pr-1"></i></span>video</a>
+          <p class="hover:text-blue-600 hover:underline hover:bg-blue-50 px-2 py-1 hover:font-medium"><span><i class="fa-solid fa-book pr-1"></i></span>book</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  </div>
+
+
+
+
+</div>

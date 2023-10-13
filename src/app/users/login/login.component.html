@@ -1,0 +1,42 @@
+<div class="flex flex-wrap justify-center lg:pt-10  align-middle bg-gray-100  ">
+
+
+  <div class="bg-blue-500 flex flex-col  w-full lg:w-[600px] justify-center lg:rounded-l-lg shadow-md hidden lg:block">
+Signup adverity
+  </div>
+
+  <div class="bg-white flex flex-col w-full lg:w-[600px] justify-center align-middle p-4 lg:rounded-r-lg shadow-md">
+
+
+
+
+    <!-- Title -->
+     <h1 class="font-mono text-blue-600 font-semibold text-lg align-middle ">Register</h1>
+     <form method="post" class="p-4" [formGroup]='registerationForm' (ngSubmit)="procedRegistration()">
+
+
+
+
+
+     <!-- Phone Number -->
+     <mat-form-field class="w-full p-0">
+      <mat-label for="level" class="text-gray-500 font-semibold text-sm">Phone Number</mat-label>
+      <input id="level" matInput formControlName="PhoneNumber" class=" bg-gray-100 text-clip p-2 rounded-2xl focus:bg-white focus:border-gray-400 focus:shadow-md w-full" type="text" placeholder="your eduaction level...">
+    </mat-form-field >
+
+<!-- Password -->
+    <mat-form-field class="w-full p-0">
+      <mat-label for="level" class="text-gray-500 font-semibold text-sm">Password</mat-label>
+      <input id="level" matInput formControlName="Password" class=" bg-gray-100 text-clip p-2 rounded-2xl focus:bg-white focus:border-gray-400 focus:shadow-md w-full" type="password" placeholder="your eduaction level...">
+    </mat-form-field >
+
+
+<!--
+    Login -->
+
+     <button  class="btn bg-blue-500 w-full  font-semibold font-mono text-lg text-white hover:bg-blue-600"><i class="bi bi-person"></i> Submit</button>
+     <p class="p-2 text-sm font-light">don't  have an account? <a href="#" class="text-blue-500 text-base text-md">Signup</a></p>
+     </form>
+      </div>
+
+</div>

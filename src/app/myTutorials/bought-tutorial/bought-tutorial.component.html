@@ -1,0 +1,127 @@
+
+<app-header (ishidden)="onhidden($event)" [showSidebar]=ishidden></app-header>
+
+   <app-side-nav [showSidebar]=ishidden></app-side-nav>
+   <div [ngClass]="{'toggle-sidebar':ishidden}">
+<div class="main mt-20" id="main">
+<main class="mt-20 p-10">
+  <mat-tab-group dynamicHeight>
+    <mat-tab label="Courses">
+
+     <div class="mt-20 flex flex-wrap justify-center gap-2 p-6">
+
+      <div *ngFor="let course of boughtCourses ">
+        <app-card
+        [subject]="course.subject"
+        [cover]="course.cover"
+        [price]="course.price"
+        [routerDirect]="'/course'"
+        [routeOne]="course.id"
+
+        [likes]="course.likesCount"
+        [views]="course.viewsCount"
+        [account_name]="course.account.accountName"
+        [account_logo]="course.account.accountLogo"
+        [lessons]="course.lessonsCount"
+        [routerDirect]="'/course'"
+        [cardId]="course.id"
+        [accountId]="course.account.id"
+        [accountDirection]="'/account'"
+
+        ></app-card>
+
+      </div>
+     </div>
+
+
+
+
+
+
+
+
+    </mat-tab>
+    <mat-tab label="Videos">
+
+
+      <div class="mt-20 flex flex-wrap  justify-center gap-2 p-6">
+
+        <div *ngFor="let Video of boughtVideos ">
+          <app-card
+          [subject]="Video.title"
+          [cover]="Video.cover"
+          [price]="Video.price"
+
+
+
+          [account_name]="Video.account.accountName"
+          [account_logo]="Video.account.accountLogo"
+
+          [routerDirect]="'/course'"
+          [cardId]="Video.id"
+          [accountId]="Video.account.id"
+          [accountDirection]="'/account'"
+
+          ></app-card>
+
+        </div>
+       </div>
+
+
+
+
+
+    </mat-tab>
+
+
+
+
+
+    <mat-tab label="Books & Handouts"> Books and Handouts</mat-tab>
+
+
+
+
+
+    <mat-tab label="Exams">
+
+      <div class="mt-20 flex flex-wrap  justify-center gap-2 p-6">
+
+        <div *ngFor="let exams of boughtExams ">
+          <app-exams-card
+
+          [logo]="exams.cover"
+          [subjectId]="exams.id"
+          [routeDirection]="'/examssss/'"
+          [routeDirectionId]="'payment'"
+          [routerIdTwo]="exams.id"
+          [subject]="exams.subject"
+          year="2010-2015 E.C Years Exams"
+          [price]="exams.price+'ETB'"
+          [views]="exams.viewsCount+' views'"
+          [likes]="exams.likesCount+' likes'"
+          ></app-exams-card>
+
+        </div>
+       </div>
+
+    </mat-tab>
+
+
+
+
+  </mat-tab-group>
+
+
+
+
+
+
+
+
+
+
+</main>
+
+</div>
+</div>

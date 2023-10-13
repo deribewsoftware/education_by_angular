@@ -1,0 +1,178 @@
+<div class=""  [ngClass]="{'toggle-sidebar':ishidden}">
+  <app-header (ishidden)="onhidden($event)"></app-header>
+
+   <app-side-nav [showSidebar]=ishidden
+
+   ></app-side-nav>
+
+<main id="main"  class="main ">
+  <div class="flex flex-col gap-3 " >
+
+    <div class="banner w-full h-auto bg-slate-100 pt-5 border-b-2 border-slate-200 pb-0  ">
+
+      <div class="flex justify-around flex-wrap p-2">
+
+        <div class="flex flex-col items-center">
+
+          <img *ngIf="account.accountLogo!=null; else noAccountLogo"  class="rounded-circle w-[120px] h-[120px]"
+          src={{account.accountLogo}} alt="">
+
+          <ng-template #noAccountLogo>
+ <div class="rounded-circle w-[120px] h-[120px] bg-green-200 tracking-wide">
+  {{ChannelLogo}}
+ </div>
+          </ng-template>
+
+
+          <div class="account_name p-2">
+
+
+            <div class="font-semibold text-lg">
+ {{account.accountName}}
+            </div>
+
+
+            <div class="font-medium text-gray-400 text-xs">
+              {{account.subscriberCount}} subscribers
+                        </div>
+          </div>
+        </div>
+
+        <form class="" [formGroup]="subscriberForm" (ngSubmit)="onSubmit()">
+          <button type="submit"  [ngClass]="userSub? 'bg-red-500 hover:bg-red-600':'bg-gray-500 hover:bg-gray-600' " class=" px-4 py-1 rounded-full text-lg font-medium text-white">subscribe</button>
+
+          <div *ngIf="userSub" [ngClass]="{'animate-fade-out': hide}" class="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg">
+            Success
+          </div>
+        </form>
+      </div>
+
+
+
+
+
+      <div class="flex justify-around">
+        <button (click)="onTap('courses')" class="pb-3 p-2 hover:bg-blue-100 items-center text-sm button-animate" [ngClass]="{'act': toolbar === 'courses'}">
+          Courses({{account.coursesCount}} )
+        </button>
+        <button (click)="onTap('videos')" class="pb-3 p-2 hover:bg-blue-100 items-center text-sm" [ngClass]="{'act':( toolbar === 'videos')}">
+          Videos({{account.videosCount}})
+        </button>
+        <button (click)="onTap('books')" class="pb-3 p-2 hover:bg-blue-100 items-center text-sm " [ngClass]="{'act': (toolbar =='books')}">
+          Books({{account.booksCount}})
+        </button>
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+<!-- Cards list -->
+
+<!-- Courses card -->
+
+<div class="flex flex-col justify-around gap-4 pt-10 "  *ngIf="toolbar==='courses' || toolbar==null">
+  <h1 class="lg:pl-4 text-lg border-b-2  font-sans font-medium">Cyber Security</h1>
+
+  <div class=" lg:mx-10 flex  justify-around overflow-x-hidden gap-4 pt-4 " *ngIf="account.courses.length!=0; else noCourses" >
+
+
+    <div *ngFor="let course of account.courses">
+      <app-my-course-card
+      [cover]="course.cover"
+
+      [subject]="course.subject"
+      [price]="course.price"
+      [cardId]="course.id"
+      [routerDirect]="'/course'"
+
+      >
+
+      </app-my-course-card>
+    </div>
+
+  </div>
+  <ng-template #noCourses>
+<div class=" text-red-700 text-4xl font-extrabold">No Courses</div>
+  </ng-template>
+
+
+
+</div>
+
+
+
+
+<!-- Videos Cards -->
+<div class="flex flex-wrap justify-around gap-4 pt-10" *ngIf="toolbar==='videos'">
+
+  <div class="flex flex-wrap justify-around gap-4 pt-10"   *ngIf="account.videos.length!=0; else noCourses" >
+    <div *ngFor="let video of account.videos">
+      <app-my-course-card
+      [cover]="video.cover"
+
+      [subject]="video.title"
+      [price]="video.price"
+      [cardId]="video.id"
+      [routerDirect]="'/course'"
+
+      >
+
+      </app-my-course-card>
+    </div>
+
+  </div>
+
+
+  <ng-template #noCourses>
+    <div class=" text-red-700 text-4xl font-extrabold">No Videos</div>
+    </ng-template>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Books Cards -->
+<div class="flex flex-wrap justify-around gap-4 pt-10" *ngIf="toolbar==='books'">
+
+  <div class="flex flex-wrap justify-around gap-4 pt-10" *ngIf="account.books.length!=0; else noBooks" >
+
+
+    <div *ngFor="let book of account.books">
+      <app-my-course-card
+      [cover]="book .cover"
+
+      [subject]="book .title"
+      [price]="book .price"
+      [cardId]="book .id"
+      [routerDirect]="'/course'"
+
+      >
+
+      </app-my-course-card>
+    </div>
+
+  </div>
+
+  <ng-template #noBooks>
+    <div class=" text-red-700 text-4xl font-extrabold">No Books</div>
+    </ng-template>
+</div>
+
+
+</div>
+</main>
+</div>

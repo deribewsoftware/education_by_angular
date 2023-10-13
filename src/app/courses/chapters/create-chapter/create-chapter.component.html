@@ -1,0 +1,32 @@
+<div class="flex justify-center align-middle bg-slate-200 lg:p-10 h-screen w-screen">
+
+  <div class="bg-white shadow-lg rounded-2xl flex-col p-2 w-full lg:w-1/2 align-middle ">
+<h1 class="text-center text-3xl font-medium font-sans">Add {{course.subject}} Chapters</h1>
+<div class="mt-4 h-[200px] ">
+  <img src={{course.cover}}  class=" w-full h-full object-contain rounded-2xl" alt="">
+</div>
+
+<form [formGroup]="chapterForm" (ngSubmit)=" onCreateChapter()" class="flex-col gap-3 lg:pl-20 lg:pr-20">
+<div class="flex flex-col gap-2 p-2 mt-4 justify-start mb-6">
+  <label class="text-black font-sans font-medium " for="chapter">Chapter:</label>
+  <input formControlName="chapter" class="form-control bg-gray-100 rounded-full" type="text" id="chapter" placeholder="enter chapter..."  >
+</div>
+
+
+
+<div class="flex flex-col gap-2 p-2 mt-4 justify-start mb-10">
+  <label for="title" class="text-black font-sans font-medium ">Title:</label>
+  <input formControlName="title" class="form-control bg-gray-100 rounded-full"  type="text" id="title" placeholder="enter chapter Title..." >
+</div>
+
+
+
+<div class="flex justify-center mt-4  mb-10">
+  <button type="submit" class="btn bg-blue-600 hover:bg-blue-700 text-white font-sans font-medium px-4 py-1">Submit</button>
+</div>
+</form>
+
+  </div>
+
+</div>
+

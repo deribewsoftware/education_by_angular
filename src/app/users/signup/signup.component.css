@@ -1,0 +1,27 @@
+.show-form{
+  transition: all 0.5s ease-out ;
+  transform:translateX(2%);
+  -webkit-transform:translateX(2%);
+  -moz-transform:translateX(2%);
+  -ms-transform:translateX(2%);
+  -o-transform:translateX(2%);
+  opacity: 1;
+  -webkit-transition: all 0.5s ease-out ;
+  -moz-transition: all 0.5s ease-out ;
+  -ms-transition: all 0.5s ease-out ;
+  -o-transition: all 0.5s ease-out ;
+}
+
+.hide-form{
+  transition: all 0.5s ease-out;
+  transform: translateX(150%);
+  -webkit-transform: translateX(150%);
+  -moz-transform: translateX(150%);
+  -ms-transform: translateX(150%);
+  -o-transform: translateX(150%);
+  opacity: 0;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+}
