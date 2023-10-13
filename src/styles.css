@@ -190,3 +190,60 @@ overflow-x: hidden;
 ::-webkit-scrollbar-thumb {
   background-color: #aab7cf;
 }
+
+
+.category-absolute{
+  position: absolute;
+  transform:translate3d(0,-100%,-100%) ;
+  transform: translateY(-100%);
+  -webkit-transform:translate3d(0,-100%,-100%) ;
+  -moz-transform:translate3d(0,-100%,-100%) ;
+  -ms-transform:translate3d(0,-100%,-100%) ;
+  -o-transform:translate3d(0,-100%,-100%) ;
+  opacity: 0;
+}
+.course-absolute,.sub-category-absolute,.course-absolute,.video-absolute,.book-absolute{
+  position: absolute;
+  opacity: 0;
+  transform: translateX(-100px);
+  -webkit-transform: translateX(-100px);
+  -moz-transform: translateX(-100px);
+  -ms-transform: translateX(-100px);
+  -o-transform: translateX(-100px);
+  visibility: hidden;
+}
+
+
+
+.category:hover .category-absolute{
+  transition:all 0.4s linear ;
+  -webkit-transition:all 0.4s linear ;
+  -moz-transition:all 0.4s linear ;
+  -ms-transition:all 0.4s linear ;
+  -o-transition:all 0.4s linear ;
+  transform: translate3d(0,0,0);
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  -o-transform: translate3d(0,0,0);
+  opacity: 1;
+
+}
+
+.sub-category:hover .sub-category-absolute,.course:hover .course-absolute,.video:hover .video-absolute,.book:hover .book-absolute{
+  opacity: 1;
+  transition: all 0.3s linear;
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  visibility: visible;
+}
+.index{
+  z-index: -10;
+}
